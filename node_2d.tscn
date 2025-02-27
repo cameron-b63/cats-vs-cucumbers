@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b2ym33q2241o"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(-4, -1)
