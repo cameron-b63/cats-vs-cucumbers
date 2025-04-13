@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://4kqtgr8np40m"]
+
+[ext_resource type="Script" path="res://PowerUp.cs" id="1_dyaq0"]
+[ext_resource type="Texture2D" uid="uid://r0vw5ff8pkj8" path="res://GODOT PICS/catfood.png" id="2_ad168"]
+[ext_resource type="Texture2D" uid="uid://b10wgaqwtes38" path="res://GODOT PICS/catnip.png" id="3_lya2s"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4wrwx"]
+radius = 33.0
+height = 80.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_anrun"]
+radius = 43.0
+height = 106.0
+
+[node name="PowerUp" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_dyaq0")
+
+[node name="SpeedSprite" type="Sprite2D" parent="."]
+position = Vector2(-7.62939e-06, 9)
+scale = Vector2(0.0880819, 0.0911545)
+texture = ExtResource("2_ad168")
+
+[node name="JumpSprite" type="Sprite2D" parent="."]
+position = Vector2(208, 4)
+scale = Vector2(0.12, 0.119)
+texture = ExtResource("3_lya2s")
+
+[node name="SpeedCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 10)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_4wrwx")
+debug_color = Color(0.547962, 0.129319, 0.145855, 0.42)
+
+[node name="JumpCollision" type="CollisionShape2D" parent="."]
+position = Vector2(208, -1)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_anrun")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
