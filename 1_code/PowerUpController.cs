@@ -4,7 +4,7 @@ using System;
 public partial class PowerUpController : Node2D
 {
 	private PackedScene powerUpScene = GD.Load<PackedScene>("res://PowerUp.tscn");
-
+	
 	public override void _Ready()
 	{
 		// Example spawn position

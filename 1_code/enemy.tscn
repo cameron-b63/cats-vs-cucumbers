@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://cipllyg5q5se5"]
+
+[ext_resource type="Texture2D" uid="uid://0tamxxw2t75f" path="res://GODOT PICS/enemy.png" id="1_1lnpt"]
+[ext_resource type="Script" path="res://Enemy.cs" id="1_qwhyc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rm8du"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1lnpt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bhpuw"]
+radius = 24.0
+height = 112.0
+
+[node name="enemy" type="RigidBody2D"]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_qwhyc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_rm8du")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_bhpuw")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
