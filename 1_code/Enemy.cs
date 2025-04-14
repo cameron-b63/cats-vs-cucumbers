@@ -42,9 +42,4 @@ public partial class Enemy : RigidBody2D
 			animatedSprite2D.FlipH = !moveLeft;
 		}
 	}
-	
-	private void _on_visible_on_screen_notifier_2d_screen_exited()
-	{
-		QueueFree();
-	}
 }
