@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b2ym33q2241o"]
+[gd_scene load_steps=13 format=3 uid="uid://b2ym33q2241o"]
 
 [ext_resource type="Texture2D" uid="uid://bdfokei4634p0" path="res://GODOT PICS/forest.jpg" id="1_r0dq0"]
 [ext_resource type="Script" path="res://Player.cs" id="1_tqi2i"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://PowerUpController.cs" id="4_x5dwb"]
 [ext_resource type="Script" path="res://EnemyController.cs" id="5_mooxt"]
 [ext_resource type="Script" path="res://NextLevelController.cs" id="6_p1tt0"]
+[ext_resource type="Script" path="res://FunctionTest.cs" id="7_lqdtg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8a7r5"]
 animations = [{
@@ -73,3 +74,6 @@ script = ExtResource("5_mooxt")
 
 [node name="NextLevelController" type="Node2D" parent="."]
 script = ExtResource("6_p1tt0")
+
+[node name="FunctionTest" type="Node2D" parent="."]
+script = ExtResource("7_lqdtg")
