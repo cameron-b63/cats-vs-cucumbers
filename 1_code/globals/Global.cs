@@ -7,7 +7,7 @@ public partial class Global : Node
 	
 	// Public variables to keep in the singleton
 	public MainScene MainScene { get; set; }
-	public CharacterBody2D player { get; set; }
+	public CharacterBody2D PlayerNode { get; set; }
 	public Node2D CurrentLevel { get; set; }
 	
 	// Called when the node enters the scene tree for the first time.

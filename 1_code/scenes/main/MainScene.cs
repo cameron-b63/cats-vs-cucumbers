@@ -6,6 +6,9 @@ using System;
 public partial class MainScene : Node
 {
 	[Export]
+	public PackedScene PlayerScene;		// Store the player's scene
+	
+	[Export]
 	public PackedScene MainMenuScene;	// Store the main menu scene
 	
 	[Export]
@@ -59,6 +62,20 @@ public partial class MainScene : Node
 		// Stash the current level in the global singleton
 		Global.Instance.CurrentLevel = _levelInstance;
 		
+		// Now that the level is in the tree, instantiate the player
+		CharacterBody2D player = PlayerScene.Instantiate<CharacterBody2D>();
+		
+		// Position player at the level's spawnpoint if available
+		if (_levelInstance.HasNode("SpawnPoint"))
+		{
+			player.Position = _levelInstance.GetNode<Node2D>("SpawnPoint").GlobalPosition;
+		}
+		_levelInstance.AddChild(player);
+		
+		// Register the player in the Global singleton
+		Global.Instance.PlayerNode = player;
+		
+		// Instantiate the HUD
 		_hudInstance = HUDScene.Instantiate<Control>();
 		HUDLayer.AddChild(_hudInstance);
 	}

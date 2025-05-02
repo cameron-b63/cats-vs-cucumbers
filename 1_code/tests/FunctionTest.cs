@@ -1,45 +1,38 @@
 using Godot;
 using System;
 
+// written by: Gabe
+// debugged by: Cameron
+
 public partial class FunctionTest : Node2D
 {
 	public override void _Ready()
 	{
 		GD.Print("===== Running FunctionTest.cs =====");
-
-		// Print all children and their types
-		foreach (Node child in GetChildren())
+		// Make sure MainScene is available
+		MainScene mainScene = Global.Instance.MainScene;
+		if (mainScene == null)
 		{
-			GD.Print($"Child: {child.Name}, Type: {child.GetType().Name}");
-		}
-
-		// Try to get Player node (even if it's Node2D) and print script info
-		Node playerNode = GetNodeOrNull("../Player");
-		if (playerNode == null)
-		{
-			GD.PrintErr("❌ Player node not found.");
+			GD.PrintErr("Main scene not set in Global singleton.");
 			return;
 		}
-
-		GD.Print($"✅ Found node named 'Player'. C# type: {playerNode.GetType().Name}");
-
-		// Try casting to your actual Player script class
-		if (playerNode is Player player)
+		
+		// Try to get Player node and print script info
+		CharacterBody2D playerNode = Global.Instance.PlayerNode;
+		if (playerNode == null)
 		{
-			GD.Print($"✔ Cast succeeded: Player.Speed = {player.Speed}");
+			GD.PrintErr("Player node not set in Global singleton.");
+			return;
 		}
-		else
+		
+		// Make sure the correct level is loaded
+		Node2D currentLevel = Global.Instance.CurrentLevel;
+		if (currentLevel == null)
 		{
-			GD.PrintErr("❌ Cast to Player class failed. Node might not be using Player.cs correctly.");
-		}		
-		if (GetTree().Root.HasNode("Main_World/Player"))
-		{
-			player = GetNode<Player>("/root/Main_World/Player");
-			GD.Print("Enemy found player in main world!");
+			GD.PrintErr("Current Level not set in Global singleton.");
+			return;	
 		}
-		else
-		{
-			GD.Print("⚠ Enemy did not find Main_World/Player — skipping.");
-		}
+		
+		GD.Print($"Global singleton is in order. Level {currentLevel.Name} properly loaded.");
 	}
 }
