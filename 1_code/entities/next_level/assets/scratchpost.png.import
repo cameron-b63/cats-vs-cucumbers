@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cm2i1rw63fev6"
-path="res://.godot/imported/scratchpost.png-b37b63891fd856d41f95f1f76f9409f8.ctex"
+path="res://.godot/imported/scratchpost.png-2b0816f0f5c65a31e97bb4161d8f61b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/next_level/scratchpost.png"
-dest_files=["res://.godot/imported/scratchpost.png-b37b63891fd856d41f95f1f76f9409f8.ctex"]
+source_file="res://entities/next_level/assets/scratchpost.png"
+dest_files=["res://.godot/imported/scratchpost.png-2b0816f0f5c65a31e97bb4161d8f61b1.ctex"]
 
 [params]
 

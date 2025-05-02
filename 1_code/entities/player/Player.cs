@@ -1,6 +1,9 @@
 using Godot;
 using System;
 
+// written by: Cameron, Nicole
+// tested by: Gabe
+
 public partial class Player : CharacterBody2D
 {
 	[Export]

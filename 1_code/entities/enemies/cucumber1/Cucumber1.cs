@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Enemy : RigidBody2D
+public partial class Cucumber1 : RigidBody2D
 {
 	[Export] public float PatrolSpeed = 150f;
 	[Export] public float ChaseSpeed = 150f;
@@ -14,7 +14,6 @@ public partial class Enemy : RigidBody2D
 	public override void _Ready()
 	{
 		animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		player = GetTree().Root.GetNode<Node2D>("Main_World/Player");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

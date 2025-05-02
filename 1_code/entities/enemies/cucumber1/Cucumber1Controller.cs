@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
-public partial class EnemyController : Node2D
+public partial class Cucumber1Controller : Node2D
 {
-	private PackedScene enemyScene = GD.Load<PackedScene>("res://enemy.tscn");
+	private PackedScene cucumber1Scene = GD.Load<PackedScene>("res://entities/enemies/cucumber1/cucumber_1.tscn");
 	private Random rng = new Random();
 	
 	public override void _Ready()
@@ -26,14 +26,14 @@ public partial class EnemyController : Node2D
 
 			float finalX = baseX + jitter;
 	
-			SpawnEnemy(new Vector2(finalX, 540));
+			SpawnCucumber1(new Vector2(finalX, 540));
 		}
 	}
 	
-	public void SpawnEnemy(Vector2 position)
+	public void SpawnCucumber1(Vector2 position)
 	{
 		// creates the enemy 
-		Enemy enemy = (Enemy)enemyScene.Instantiate();
+		Cucumber1 enemy = (Cucumber1)cucumber1Scene.Instantiate();
 		enemy.Position = position;
 		AddChild(enemy);
 	}
