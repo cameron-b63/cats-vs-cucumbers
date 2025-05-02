@@ -28,6 +28,9 @@ public partial class MainScene : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		// Register with the Global singleton
+		Global.Instance.MainScene = this;
+		
 		// The second the game is loaded, we want to show the main menu (for obvious reasons).
 		ShowMainMenu();
 	}
@@ -52,6 +55,9 @@ public partial class MainScene : Node
 		// Instantiate and attach the level and HUD to corresponding layers
 		_levelInstance = levelScene.Instantiate<Node2D>();
 		LevelLayer.AddChild(_levelInstance);
+		
+		// Stash the current level in the global singleton
+		Global.Instance.CurrentLevel = _levelInstance;
 		
 		_hudInstance = HUDScene.Instantiate<Control>();
 		HUDLayer.AddChild(_hudInstance);

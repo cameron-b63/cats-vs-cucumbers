@@ -14,9 +14,9 @@ This directory structure is adapted from a developer's suggestion [here](https:/
    - `ui`
      - `theme_default`
        - `assets`
-       - theme_default.tres
-     - font_uidefault.tres
-     - cool_font.tff
+       - `theme_default.tres`
+     - `font_uidefault.tres`
+     - `cool_font.tff`
    - `scenes`
      - `common`
        - `assets`

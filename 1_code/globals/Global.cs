@@ -3,12 +3,17 @@ using System;
 
 public partial class Global : Node
 {
-	public PackedScene main_scene { get; set; }
+	public static Global Instance { get; private set; }
+	
+	// Public variables to keep in the singleton
+	public MainScene MainScene { get; set; }
 	public CharacterBody2D player { get; set; }
+	public Node2D CurrentLevel { get; set; }
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		Instance = this;
 		GD.Print("Globals are ready to go.");
 	}
 

@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://cat5i8uq2u3ud"]
+[gd_scene load_steps=3 format=3 uid="uid://cat5i8uq2u3ud"]
+
+[ext_resource type="Script" path="res://menus/main_menu/MainMenu.cs" id="1_pf24x"]
+[ext_resource type="PackedScene" uid="uid://b2ym33q2241o" path="res://scenes/level1/level_1_scene.tscn" id="2_0rhov"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -7,6 +10,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_pf24x")
+Level1Scene = ExtResource("2_0rhov")
 
 [node name="PlayButton" type="Button" parent="."]
 layout_mode = 0
