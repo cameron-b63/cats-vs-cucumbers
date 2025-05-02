@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://b2ym33q2241o"]
+
+[ext_resource type="Texture2D" uid="uid://crjtsk5ne8q75" path="res://scenes/level1/assets/forest.jpg" id="1_7grey"]
+[ext_resource type="Script" path="res://entities/power_up/PowerUpController.cs" id="2_mtg6i"]
+[ext_resource type="Script" path="res://entities/enemies/EnemyController.cs" id="3_duij0"]
+[ext_resource type="Script" path="res://entities/next_level/NextLevelController.cs" id="4_y2rke"]
+[ext_resource type="Script" path="res://tests/FunctionTest.cs" id="5_l8qpn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_irphu"]
+size = Vector2(2864, 40)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kv2n7"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6w2qq"]
+load_path = "res://.godot/imported/ground.png-67b7e181baff1b88545b55d10063c88e.ctex"
+
+[node name="Main_World" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(1227.13, 510.5)
+scale = Vector2(5.03538, 2.46944)
+texture = ExtResource("1_7grey")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(177, 508)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(1150, 82)
+shape = SubResource("RectangleShape2D_irphu")
+debug_color = Color(0.205475, 0.0283287, 0.0635204, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+material = SubResource("CanvasItemMaterial_kv2n7")
+position = Vector2(1156, 131.5)
+scale = Vector2(7.99444, 0.719444)
+texture = SubResource("CompressedTexture2D_6w2qq")
+
+[node name="PowerUpController" type="Node2D" parent="."]
+script = ExtResource("2_mtg6i")
+
+[node name="EnemyController" type="Node2D" parent="."]
+script = ExtResource("3_duij0")
+
+[node name="NextLevelController" type="Node2D" parent="."]
+script = ExtResource("4_y2rke")
+
+[node name="FunctionTest" type="Node2D" parent="."]
+script = ExtResource("5_l8qpn")
