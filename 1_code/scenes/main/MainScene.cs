@@ -55,14 +55,12 @@ public partial class MainScene : Node
 	{
 		ClearAll();
 		
-		// Instantiate and attach the level and HUD to corresponding layers
+		// Instantiate the level
 		_levelInstance = levelScene.Instantiate<Node2D>();
-		LevelLayer.AddChild(_levelInstance);
-		
-		// Stash the current level in the global singleton
+		// Register the level with the Global singleton
 		Global.Instance.CurrentLevel = _levelInstance;
 		
-		// Now that the level is in the tree, instantiate the player
+		// Instantiate the player to play in the level
 		CharacterBody2D player = PlayerScene.Instantiate<CharacterBody2D>();
 		
 		// Position player at the level's spawnpoint if available
@@ -70,10 +68,14 @@ public partial class MainScene : Node
 		{
 			player.Position = _levelInstance.GetNode<Node2D>("SpawnPoint").GlobalPosition;
 		}
-		_levelInstance.AddChild(player);
 		
-		// Register the player in the Global singleton
+		// Put the player on the level's tree
+		_levelInstance.AddChild(player);
+		// Register the player with the Global singleton
 		Global.Instance.PlayerNode = player;
+		
+		// Add the level to the tree
+		LevelLayer.AddChild(_levelInstance);
 		
 		// Instantiate the HUD
 		_hudInstance = HUDScene.Instantiate<Control>();

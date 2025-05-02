@@ -15,11 +15,11 @@ public partial class Player : CharacterBody2D
 	[Export]
 	public int Gravity { get; set; } = 1000;
 
-	private AnimatedSprite2D animatedSprite2D;
+	[Export]
+	private AnimatedSprite2D _animatedSprite2D;
 
 	public override void _Ready()
 	{
-		animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -53,12 +53,12 @@ public partial class Player : CharacterBody2D
 		// Handle animations
 		if (direction.X != 0)
 		{
-			animatedSprite2D.FlipH = direction.X < 0;
-			animatedSprite2D.Play();
+			_animatedSprite2D.FlipH = direction.X < 0;
+			_animatedSprite2D.Play();
 		}
 		else
 		{
-			animatedSprite2D.Stop();
+			_animatedSprite2D.Stop();
 		}
 	}
 }

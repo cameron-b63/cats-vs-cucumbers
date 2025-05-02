@@ -14,7 +14,7 @@ public partial class Global : Node
 	public override void _Ready()
 	{
 		Instance = this;
-		GD.Print("Globals are ready to go.");
+		GD.Print("Global singleton is ready to go.");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

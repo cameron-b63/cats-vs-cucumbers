@@ -6,6 +6,7 @@ using System;
 
 public partial class FunctionTest : Node2D
 {
+	// All these tests are run when this Node is loaded.
 	public override void _Ready()
 	{
 		GD.Print("===== Running FunctionTest.cs =====");

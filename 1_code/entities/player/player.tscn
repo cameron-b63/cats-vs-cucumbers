@@ -16,10 +16,11 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_73ke0"]
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_animatedSprite2D") groups=["Player"]]
 position = Vector2(48, 505)
 collision_mask = 2
 script = ExtResource("1_h34xs")
+_animatedSprite2D = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8a7r5")
