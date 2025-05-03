@@ -33,6 +33,9 @@ public partial class NextLevel : Area2D
 		}
 		
 		// changes to next level
-		Global.Instance.MainScene.StartLevel(Global.Instance.NextLevelSource);
+		if (Global.Instance.ShouldLoadNextLevel)
+		{
+			Global.Instance.MainScene.StartLevel(Global.Instance.NextLevelSource);	
+		}
 	}
 }

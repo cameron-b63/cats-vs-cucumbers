@@ -12,6 +12,9 @@ public partial class Global : Node
 	public PackedScene CurrentLevelSource { get; set; }
 	public PackedScene NextLevelSource { get; set; }
 	
+	// Public primitives
+	public bool ShouldLoadNextLevel { get; set; }
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{

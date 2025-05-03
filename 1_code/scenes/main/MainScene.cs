@@ -33,6 +33,7 @@ public partial class MainScene : Node
 	{
 		// Register with the Global singleton
 		Global.Instance.MainScene = this;
+		Global.Instance.ShouldLoadNextLevel = false;
 		
 		// The second the game is loaded, we want to show the main menu (for obvious reasons).
 		ShowMainMenu();
@@ -47,6 +48,9 @@ public partial class MainScene : Node
 		
 		// Put menu instance into the menu layer
 		MenuLayer.AddChild(_menuInstance);
+		
+		// Let game know it's ok to load the next level
+		Global.Instance.ShouldLoadNextLevel = true;
 	}
 	
 	// As the name suggests, responsible for starting a level.
