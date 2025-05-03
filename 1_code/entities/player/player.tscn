@@ -21,7 +21,7 @@ size = Vector2(123, 123)
 size = Vector2(126, 35.5)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_animatedSprite2D") groups=["Player"]]
-position = Vector2(48, 505)
+position = Vector2(575, 425)
 collision_mask = 6
 script = ExtResource("1_h34xs")
 _animatedSprite2D = NodePath("AnimatedSprite2D")
@@ -35,6 +35,7 @@ position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_73ke0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -100)
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
