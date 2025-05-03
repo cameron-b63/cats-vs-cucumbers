@@ -61,6 +61,10 @@ public partial class Cucumber1 : CharacterBody2D
 	{
 		if(body is Player player)
 		{
+			if(player != null)
+			{
+				player.TakeDamage(1);
+			}
 			GD.Print("Player touched cucumber!");
 		}
 	}

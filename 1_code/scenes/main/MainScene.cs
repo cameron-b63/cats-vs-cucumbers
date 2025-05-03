@@ -54,7 +54,7 @@ public partial class MainScene : Node
 	public void StartLevel(PackedScene levelScene)
 	{
 		ClearAll();
-		
+		Global.Instance.CurrentLevelSource = levelScene;
 		// Instantiate the level
 		_levelInstance = levelScene.Instantiate<Node2D>();
 		// Register the level with the Global singleton
