@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=3 uid="uid://cxmua1uqwar47"]
+
+[ext_resource type="Texture2D" path="res://GODOT PICS/forest.jpg" id="1_r0dq0"]
+[ext_resource type="Script" path="res://Player.cs" id="1_tqi2i"]
+[ext_resource type="Texture2D" uid="uid://poowmb1jlwpv" path="res://icon.svg" id="2_58eom"]
+[ext_resource type="Script" path="res://PowerUpController.cs" id="4_x5dwb"]
+[ext_resource type="Script" path="res://EnemyController.cs" id="5_mooxt"]
+[ext_resource type="Script" path="res://NextLevelController.cs" id="6_p1tt0"]
+[ext_resource type="Script" path="res://FunctionTest.cs" id="7_lqdtg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8a7r5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_58eom")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_73ke0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_irphu"]
+size = Vector2(2864, 40)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kv2n7"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6w2qq"]
+load_path = "res://.godot/imported/ground.png-67b7e181baff1b88545b55d10063c88e.ctex"
+
+[node name="Main_World" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(1227.13, 510.5)
+scale = Vector2(5.03538, 2.46944)
+texture = ExtResource("1_r0dq0")
+
+[node name="Player" type="CharacterBody2D" parent="." groups=["Player"]]
+position = Vector2(48, 505)
+collision_mask = 2
+script = ExtResource("1_tqi2i")
+Speed = null
+JumpVelocity = null
+Gravity = null
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_8a7r5")
+frame_progress = 0.563669
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_73ke0")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(177, 508)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(1150, 82)
+shape = SubResource("RectangleShape2D_irphu")
+debug_color = Color(0.205475, 0.0283287, 0.0635204, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+material = SubResource("CanvasItemMaterial_kv2n7")
+position = Vector2(1156, 131.5)
+scale = Vector2(7.99444, 0.719444)
+texture = SubResource("CompressedTexture2D_6w2qq")
+
+[node name="PowerUpController" type="Node2D" parent="."]
+script = ExtResource("4_x5dwb")
+
+[node name="EnemyController" type="Node2D" parent="."]
+script = ExtResource("5_mooxt")
+
+[node name="NextLevelController" type="Node2D" parent="."]
+script = ExtResource("6_p1tt0")
+
+[node name="FunctionTest" type="Node2D" parent="."]
+script = ExtResource("7_lqdtg")

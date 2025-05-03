@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://cat5i8uq2u3ud"]
+[gd_scene load_steps=8 format=3 uid="uid://cat5i8uq2u3ud"]
 
 [ext_resource type="Script" path="res://menus/main_menu/MainMenu.cs" id="1_pf24x"]
 [ext_resource type="PackedScene" uid="uid://b2ym33q2241o" path="res://scenes/level1/level_1_scene.tscn" id="2_0rhov"]
+[ext_resource type="Texture2D" uid="uid://dgedlufrrgese" path="res://menus/ButtonText_Orange_OnOffBackground.png" id="3_bukls"]
+[ext_resource type="Texture2D" uid="uid://bir7as7btjwfo" path="res://menus/Box_Blue_Rounded.png" id="3_lv4c5"]
+[ext_resource type="Texture2D" uid="uid://drpgj5tng5deu" path="res://menus/Teal.png" id="3_osxsi"]
+[ext_resource type="FontFile" uid="uid://dhqy3nd8oors8" path="res://fonts/LuckiestGuy-Regular.ttf" id="5_31qf3"]
+[ext_resource type="Texture2D" uid="uid://uk2v6a1qk7od" path="res://menus/Banner_Orange.png" id="5_eanr5"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -13,10 +18,71 @@ grow_vertical = 2
 script = ExtResource("1_pf24x")
 Level1Scene = ExtResource("2_0rhov")
 
+[node name="TealColor" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -276.0
+offset_top = -218.0
+offset_right = 748.0
+offset_bottom = 806.0
+scale = Vector2(120.207, 1.08877)
+texture = ExtResource("3_osxsi")
+
+[node name="BlueBack" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 338.0
+offset_top = 59.0
+offset_right = 1847.0
+offset_bottom = 1569.0
+scale = Vector2(0.345682, 0.364002)
+texture = ExtResource("3_lv4c5")
+stretch_mode = 5
+
 [node name="PlayButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 427.0
-offset_top = 221.0
-offset_right = 741.0
-offset_bottom = 443.0
-text = "PLAY"
+offset_top = 155.0
+offset_right = 759.0
+offset_bottom = 377.0
+theme_override_colors/font_color = Color(0.253575, 0.169709, 0.00833408, 1)
+theme_override_fonts/font = ExtResource("5_31qf3")
+theme_override_font_sizes/font_size = 30
+text = "Quick Play"
+icon = ExtResource("3_bukls")
+flat = true
+icon_alignment = 1
+
+[node name="Banner" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 395.0
+offset_top = 14.0
+offset_right = 1534.0
+offset_bottom = 471.0
+scale = Vector2(0.358103, 0.316398)
+texture = ExtResource("5_eanr5")
+
+[node name="Label" type="Label" parent="Banner"]
+layout_mode = 0
+offset_left = 117.285
+offset_top = 72.6933
+offset_right = 1019.28
+offset_bottom = 345.693
+theme_override_colors/font_color = Color(0.947199, 0.947199, 0.947199, 1)
+theme_override_fonts/font = ExtResource("5_31qf3")
+theme_override_font_sizes/font_size = 160
+text = "Let's Play!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 433.0
+offset_top = 378.0
+offset_right = 765.0
+offset_bottom = 515.0
+theme_override_colors/font_color = Color(0.24331, 0.137948, 0.0216008, 1)
+theme_override_fonts/font = ExtResource("5_31qf3")
+theme_override_font_sizes/font_size = 25
+text = "Customize Your Cat"
+icon = ExtResource("3_bukls")
+flat = true
+icon_alignment = 1
