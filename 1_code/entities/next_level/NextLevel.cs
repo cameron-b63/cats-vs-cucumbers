@@ -20,8 +20,22 @@ public partial class NextLevel : Area2D
 	}
 	private void LoadNextScene()
 	{
-		// changes to next level, currently restarts level  
-		// until next levels are implemented
-		GetTree().ReloadCurrentScene();
+		if (Global.Instance.MainScene == null)
+		{
+			GD.PrintErr("MainScene missing from Global.");
+			return;
+		} 
+		
+		if (Global.Instance.NextLevelSource == null)
+		{
+			GD.PrintErr("NextLevelSource missing from Global.");
+			return;
+		}
+		
+		// changes to next level
+		if (Global.Instance.ShouldLoadNextLevel)
+		{
+			Global.Instance.MainScene.StartLevel(Global.Instance.NextLevelSource);	
+		}
 	}
 }

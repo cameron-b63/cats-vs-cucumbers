@@ -16,18 +16,19 @@ public partial class MainMenu : Control
 		// Put our OnPlayPressed function in the Button's action
 		_playButton.Pressed += OnPlayPressed;
 		
-		GD.Print("Main menu is ready.");
-	}
-	
-	private void OnPlayPressed()
-	{
-		// use the exported level 1 scene
+		// Put level 1 in as the next level
 		if (Level1Scene == null)
 		{
 			GD.PrintErr("Level1Scene not available");
 			return;
 		}
+		Global.Instance.NextLevelSource = Level1Scene;
 		
+		GD.Print("Main menu is ready.");
+	}
+	
+	private void OnPlayPressed()
+	{
 		// grab MainScene from the Global singleton (that's why we put it there)
 		MainScene main = Global.Instance.MainScene;
 		if (main == null)
@@ -37,7 +38,7 @@ public partial class MainMenu : Control
 		}
 		
 		// Start level 1
-		main.StartLevel(Level1Scene);
+		main.StartLevel(Global.Instance.NextLevelSource);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
