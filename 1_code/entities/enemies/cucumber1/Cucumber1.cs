@@ -4,11 +4,12 @@ using System;
 // written by: Gabe
 // refactored by: Cameron
 
-public partial class Cucumber1 : RigidBody2D
+public partial class Cucumber1 : CharacterBody2D
 {
-	[Export] public float PatrolSpeed = 150f;
-	[Export] public float ChaseSpeed = 150f;
+	[Export] public float Speed = 150f;
 	[Export] public float ChaseRange = 250f;
+	public float gravity = 400f;
+	public Vector2 velocity = Vector2.Zero;
 
 	private bool moveLeft = true;
 	
@@ -23,6 +24,7 @@ public partial class Cucumber1 : RigidBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _PhysicsProcess(double delta)
 	{
+		Vector2 direction = moveLeft ? Vector2.Left : Vector2.Right;
 		// returns if there is no player detected
 		if (Global.Instance.PlayerNode == null) 
 		{
@@ -36,16 +38,34 @@ public partial class Cucumber1 : RigidBody2D
 		// If player is within range, chase
 		if (distance < ChaseRange)
 		{
-			Vector2 direction = (Global.Instance.PlayerNode.GlobalPosition - GlobalPosition).Normalized();
-			LinearVelocity = new Vector2(direction.X * ChaseSpeed, LinearVelocity.Y);
+			direction = (Global.Instance.PlayerNode.GlobalPosition - GlobalPosition).Normalized();
 			animatedSprite2D.FlipH = direction.X < 0;
 		}
 		else
 		{
 			// Patrol movement
-			Vector2 direction = moveLeft ? Vector2.Left : Vector2.Right;
-			LinearVelocity = direction * PatrolSpeed;
+			direction = moveLeft ? Vector2.Left : Vector2.Right;
 			animatedSprite2D.FlipH = !moveLeft;
+		}
+		velocity.X = Speed * direction.X;
+		Velocity = velocity; 
+		MoveAndSlide();
+	}
+	
+	private void _on_visible_on_screen_notifier_2d_screen_exited()
+	{
+		QueueFree();
+	}
+	
+	private void _on_area_2d_body_entered(Node2D body)
+	{
+		if(body is Player player)
+		{
+			if(player != null)
+			{
+				player.TakeDamage(1);
+			}
+			GD.Print("Player touched cucumber!");
 		}
 	}
 }

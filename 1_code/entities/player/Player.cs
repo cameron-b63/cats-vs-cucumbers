@@ -14,12 +14,17 @@ public partial class Player : CharacterBody2D
 
 	[Export]
 	public int Gravity { get; set; } = 1000;
+	
+	[Export]
+	public int MaxHealth { get; set; } = 3;
+	public int CurrentHealth;
 
 	[Export]
 	private AnimatedSprite2D _animatedSprite2D;
 
 	public override void _Ready()
 	{
+		CurrentHealth = MaxHealth;
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -60,5 +65,21 @@ public partial class Player : CharacterBody2D
 		{
 			_animatedSprite2D.Stop();
 		}
+	}
+	
+	public void TakeDamage(int amount)
+	{
+		CurrentHealth -= amount;
+		
+		if(CurrentHealth <= 0)
+		{
+			CallDeferred(nameof(Die));
+		}
+	}
+	
+	private void Die()
+	{
+		GD.Print("Player died :(");
+		Global.Instance.MainScene.StartLevel(Global.Instance.CurrentLevelSource);
 	}
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cipllyg5q5se5"]
+[gd_scene load_steps=6 format=3 uid="uid://cipllyg5q5se5"]
 
 [ext_resource type="Texture2D" uid="uid://crotu4t6gqaeb" path="res://entities/enemies/cucumber1/assets/cucumber_1.png" id="1_1lnpt"]
 [ext_resource type="Script" path="res://entities/enemies/cucumber1/Cucumber1.cs" id="1_qwhyc"]
@@ -18,9 +18,11 @@ animations = [{
 radius = 24.0
 height = 112.0
 
-[node name="Cucumber1" type="RigidBody2D" node_paths=PackedStringArray("animatedSprite2D")]
-collision_mask = 0
-gravity_scale = 0.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q8m5q"]
+
+[node name="Cucumber1" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite2D")]
+collision_layer = 8
+collision_mask = 4
 script = ExtResource("1_qwhyc")
 animatedSprite2D = NodePath("AnimatedSprite2D")
 
@@ -34,4 +36,11 @@ shape = SubResource("CapsuleShape2D_bhpuw")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_q8m5q")
+
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

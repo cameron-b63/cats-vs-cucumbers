@@ -26,10 +26,10 @@ texture = ExtResource("1_7grey")
 
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(177, 508)
-collision_layer = 2
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2(1150, 82)
+position = Vector2(1151, 132)
 shape = SubResource("RectangleShape2D_irphu")
 debug_color = Color(0.205475, 0.0283287, 0.0635204, 0.42)
 
