@@ -15,10 +15,11 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_73ke0"]
+size = Vector2(123, 123)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_animatedSprite2D") groups=["Player"]]
 position = Vector2(48, 505)
-collision_mask = 2
+collision_mask = 6
 script = ExtResource("1_h34xs")
 _animatedSprite2D = NodePath("AnimatedSprite2D")
 
@@ -27,6 +28,7 @@ sprite_frames = SubResource("SpriteFrames_8a7r5")
 frame_progress = 0.563669
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_73ke0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
