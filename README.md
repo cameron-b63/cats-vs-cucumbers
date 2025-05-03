@@ -1,14 +1,11 @@
-# Dependencies
-Cats vs. Cucumbers is written as a .NET Godot project using C#.
+# Cats vs. Cucumbers
+Cats vs. Cucumbers is a software package produced by a group of students for CS 3354 (Software Engineering). The package consists of the 2D game "Cats vs. Cucumbers" alongside all related documentation.
 
-# Player
-The `Player` node contains a `CollisionShape2D` and an `AnimationSprite2D` to manage collisions with enemies/projectiles and animation respectively. It uses standard left-right movement, along with a jump action.
+## Project Information
+This project is a 2D .NET Godot project. All Godot files are contained within the `1_code` subdirectory. For more information, look to `4_documentation`.
 
-# Enemy
-The `Enemy` node contains a `CollisionShape2D` and a `Sprite2D` to represent the enemy and manage collisions with the player. Enemies operate in two modes: **patrol** and **chase**, determined by the distance between the enemy and the player.
-
-# Power-Ups
-Power-ups are nodes with a `CollisionShape2D` and a `Sprite2D` to represent the power-up. When a player collects a power-up, they temporarily gain a specific effect (e.g., speed boost, jump boost), which reverts after a defined duration.
-
-# Next Level
-The **next level marker** is an indicator object that shows the location the player must reach after defeating the level boss. Interacting with the marker routes the player to the next level in the game.
+## Building From Source
+This git repository has the source code for the Cats vs. Cucumbers game, but not the compiled executable. In order to build from source,
+ - Download .NET Godot, available [here](https://godotengine.org/download/windows/) for Windows.
+ - Open the `1_code` subdirectory as a Godot project after cloning the repository.
+ - Use Godot's "build" and "run" buttons in the top right of the screen. For help with this step of the process, navigate [here](https://docs.godotengine.org/en/stable/getting_started/introduction/first_look_at_the_editor.html).

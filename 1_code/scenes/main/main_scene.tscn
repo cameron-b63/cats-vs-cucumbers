@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://i8aj5iyg5dj4"]
+
+[ext_resource type="Script" path="res://scenes/main/MainScene.cs" id="1_g3vkk"]
+[ext_resource type="PackedScene" uid="uid://t7hb3u2oh4g5" path="res://entities/player/player.tscn" id="2_gxh1d"]
+[ext_resource type="PackedScene" uid="uid://cat5i8uq2u3ud" path="res://menus/main_menu/MainMenu.tscn" id="2_uywnr"]
+[ext_resource type="PackedScene" uid="uid://cbwclficf04x0" path="res://ui/HUD.tscn" id="3_s1s2y"]
+
+[node name="MainScene" type="Node" node_paths=PackedStringArray("MenuLayer", "LevelLayer", "HUDLayer")]
+script = ExtResource("1_g3vkk")
+PlayerScene = ExtResource("2_gxh1d")
+MainMenuScene = ExtResource("2_uywnr")
+HUDScene = ExtResource("3_s1s2y")
+MenuLayer = NodePath("MenuLayer")
+LevelLayer = NodePath("LevelLayer")
+HUDLayer = NodePath("HUDLayer")
+
+[node name="HUDLayer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MenuLayer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LevelLayer" type="Node2D" parent="."]

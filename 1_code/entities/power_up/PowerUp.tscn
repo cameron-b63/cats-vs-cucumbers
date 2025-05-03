@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://4kqtgr8np40m"]
 
-[ext_resource type="Script" path="res://PowerUp.cs" id="1_dyaq0"]
-[ext_resource type="Texture2D" uid="uid://r0vw5ff8pkj8" path="res://GODOT PICS/catfood.png" id="2_ad168"]
-[ext_resource type="Texture2D" uid="uid://b10wgaqwtes38" path="res://GODOT PICS/catnip.png" id="3_lya2s"]
+[ext_resource type="Script" path="res://entities/power_up/PowerUp.cs" id="1_dyaq0"]
+[ext_resource type="Texture2D" uid="uid://8au8s6ry3lmq" path="res://entities/power_up/assets/catfood.png" id="2_ad168"]
+[ext_resource type="Texture2D" uid="uid://b4xemtji2wmar" path="res://entities/power_up/assets/catnip.png" id="3_lya2s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4wrwx"]
 radius = 33.0

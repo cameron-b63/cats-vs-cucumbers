@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Cats vs Cucumbers"
-run/main_scene="res://player.tscn"
+run/main_scene="res://scenes/main/main_scene.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Globals="*res://globals/Global.cs"
 
 [display]
 

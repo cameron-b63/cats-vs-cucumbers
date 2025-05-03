@@ -1,9 +1,13 @@
 using Godot;
 using System;
 
+// written by: Gabe
+// refactored by: Cameron
+
 public partial class PowerUpController : Node2D
 {
-	private PackedScene powerUpScene = GD.Load<PackedScene>("res://PowerUp.tscn");
+	[Export]
+	private PackedScene _powerUpScene;
 	
 	public override void _Ready()
 	{
@@ -15,7 +19,7 @@ public partial class PowerUpController : Node2D
 	public void SpawnPowerUp(Vector2 position, powerUpType type)
 	{
 		// creates power up according to specified location and type
-		PowerUp powerUp = (PowerUp)powerUpScene.Instantiate();
+		PowerUp powerUp = _powerUpScene.Instantiate<PowerUp>();
 		powerUp.Type = type;
 		powerUp.Position = position;
 		AddChild(powerUp);

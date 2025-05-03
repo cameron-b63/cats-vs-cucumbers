@@ -1,9 +1,13 @@
 using Godot;
 using System;
 
-public partial class EnemyController : Node2D
+// written by: Gabe
+// debugged by: Cameron
+
+public partial class Cucumber1Controller : Node2D
 {
-	private PackedScene enemyScene = GD.Load<PackedScene>("res://enemy.tscn");
+	[Export]
+	private PackedScene cucumber1Scene;
 	private Random rng = new Random();
 	
 	public override void _Ready()
@@ -22,19 +26,20 @@ public partial class EnemyController : Node2D
 			float baseX = startX + i * spacing;
 			
 			// offset for more randomization
-			float jitter = (float)rng.Next(-20, 21); // ±20px max wiggle
+			float jitter = (float)rng.Next(-20, 21); // +/- 20px max wiggle
 
 			float finalX = baseX + jitter;
 	
-			SpawnEnemy(new Vector2(finalX, 540));
+			SpawnCucumber1(new Vector2(finalX, 540));
 		}
 	}
 	
-	public void SpawnEnemy(Vector2 position)
+	public void SpawnCucumber1(Vector2 position)
 	{
 		// creates the enemy 
-		Enemy enemy = (Enemy)enemyScene.Instantiate();
+		Cucumber1 enemy = (Cucumber1)cucumber1Scene.Instantiate();
 		enemy.Position = position;
+		
 		AddChild(enemy);
 	}
 }
