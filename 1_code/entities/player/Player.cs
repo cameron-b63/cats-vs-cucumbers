@@ -82,4 +82,13 @@ public partial class Player : CharacterBody2D
 		GD.Print("Player died :(");
 		Global.Instance.MainScene.StartLevel(Global.Instance.CurrentLevelSource);
 	}
+	
+	private void _on_attackHitBox_body_entered(Node2D body)
+	{
+		if(body is Cucumber1 cucumber && cucumber != null)
+		{
+			cucumber.CucumberTakeDamage(1);
+			GD.Print("Cucumber hit sword");
+		}
+	}
 }
