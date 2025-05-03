@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://drpgj5tng5deu"
-path="res://.godot/imported/Teal.png-3216522d795fb12c902e12d5f478ad37.ctex"
+path="res://.godot/imported/Teal.png-29de4b8372c1e50d9c09913a559e1848.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://menus/Teal.png"
-dest_files=["res://.godot/imported/Teal.png-3216522d795fb12c902e12d5f478ad37.ctex"]
+source_file="res://menus/main_menu/assets/Teal.png"
+dest_files=["res://.godot/imported/Teal.png-29de4b8372c1e50d9c09913a559e1848.ctex"]
 
 [params]
 

@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://menus/main_menu/MainMenu.cs" id="1_pf24x"]
 [ext_resource type="PackedScene" uid="uid://b2ym33q2241o" path="res://scenes/level1/level_1_scene.tscn" id="2_0rhov"]
-[ext_resource type="Texture2D" uid="uid://dgedlufrrgese" path="res://menus/ButtonText_Orange_OnOffBackground.png" id="3_bukls"]
-[ext_resource type="Texture2D" uid="uid://bir7as7btjwfo" path="res://menus/Box_Blue_Rounded.png" id="3_lv4c5"]
-[ext_resource type="Texture2D" uid="uid://drpgj5tng5deu" path="res://menus/Teal.png" id="3_osxsi"]
+[ext_resource type="Texture2D" uid="uid://dgedlufrrgese" path="res://menus/main_menu/assets/ButtonText_Orange_OnOffBackground.png" id="3_bukls"]
+[ext_resource type="Texture2D" uid="uid://bir7as7btjwfo" path="res://menus/main_menu/assets/Box_Blue_Rounded.png" id="3_lv4c5"]
+[ext_resource type="Texture2D" uid="uid://drpgj5tng5deu" path="res://menus/main_menu/assets/Teal.png" id="3_osxsi"]
 [ext_resource type="FontFile" uid="uid://dhqy3nd8oors8" path="res://fonts/LuckiestGuy-Regular.ttf" id="5_31qf3"]
-[ext_resource type="Texture2D" uid="uid://uk2v6a1qk7od" path="res://menus/Banner_Orange.png" id="5_eanr5"]
+[ext_resource type="Texture2D" uid="uid://uk2v6a1qk7od" path="res://menus/main_menu/assets/Banner_Orange.png" id="5_eanr5"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3

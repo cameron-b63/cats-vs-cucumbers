@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://uk2v6a1qk7od"
-path="res://.godot/imported/Banner_Orange.png-8248b47edbcf64ee08b7d67ef875daa8.ctex"
+path="res://.godot/imported/Banner_Orange.png-3974983f650f7113d0aab9bebcf25d6f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://menus/Banner_Orange.png"
-dest_files=["res://.godot/imported/Banner_Orange.png-8248b47edbcf64ee08b7d67ef875daa8.ctex"]
+source_file="res://menus/main_menu/assets/Banner_Orange.png"
+dest_files=["res://.godot/imported/Banner_Orange.png-3974983f650f7113d0aab9bebcf25d6f.ctex"]
 
 [params]
 
