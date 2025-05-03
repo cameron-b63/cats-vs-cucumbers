@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4xemtji2wmar"
-path="res://.godot/imported/catnip.png-92270c84ee4d127bc5d903055f05e824.ctex"
+uid="uid://8au8s6ry3lmq"
+path="res://.godot/imported/catfood.png-bd41fe1d2297813063c0c13d4a450236.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/power_up/catnip.png"
-dest_files=["res://.godot/imported/catnip.png-92270c84ee4d127bc5d903055f05e824.ctex"]
+source_file="res://entities/power_up/assets/catfood.png"
+dest_files=["res://.godot/imported/catfood.png-bd41fe1d2297813063c0c13d4a450236.ctex"]
 
 [params]
 

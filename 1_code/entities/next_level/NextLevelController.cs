@@ -1,13 +1,17 @@
 using Godot;
 using System;
 
+// written by: Gabe
+
 public partial class NextLevelController : Node2D
 {
-	private PackedScene nextLevelScene = GD.Load<PackedScene>("res://nextlevel.tscn");
+	[Export]
+	private PackedScene nextLevelScene;
 	
 	public override void _Ready()
 	{
 		// calls the level marker creator
+		// TODO: make levels spawn on top of a Node2D "LevelEnd" found in each level file.
 		SpawnLevelMarker(new Vector2(2700, 520));
 	}
 	

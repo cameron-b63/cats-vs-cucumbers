@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2ym33q2241o"]
+[gd_scene load_steps=12 format=3 uid="uid://b2ym33q2241o"]
 
 [ext_resource type="Texture2D" uid="uid://crjtsk5ne8q75" path="res://scenes/level1/assets/forest.jpg" id="1_7grey"]
 [ext_resource type="Script" path="res://entities/power_up/PowerUpController.cs" id="2_mtg6i"]
 [ext_resource type="Script" path="res://entities/enemies/cucumber1/Cucumber1Controller.cs" id="3_85i7q"]
+[ext_resource type="PackedScene" uid="uid://4kqtgr8np40m" path="res://entities/power_up/PowerUp.tscn" id="3_o4efn"]
 [ext_resource type="Script" path="res://entities/next_level/NextLevelController.cs" id="4_y2rke"]
+[ext_resource type="PackedScene" uid="uid://cipllyg5q5se5" path="res://entities/enemies/cucumber1/cucumber_1.tscn" id="5_dwho7"]
 [ext_resource type="Script" path="res://tests/FunctionTest.cs" id="5_l8qpn"]
+[ext_resource type="PackedScene" uid="uid://bnytqr2pv31a4" path="res://entities/next_level/nextlevel.tscn" id="6_uteio"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_irphu"]
 size = Vector2(2864, 40)
@@ -38,12 +41,15 @@ texture = SubResource("CompressedTexture2D_6w2qq")
 
 [node name="PowerUpController" type="Node2D" parent="."]
 script = ExtResource("2_mtg6i")
+_powerUpScene = ExtResource("3_o4efn")
 
 [node name="EnemyController" type="Node2D" parent="."]
 script = ExtResource("3_85i7q")
+cucumber1Scene = ExtResource("5_dwho7")
 
 [node name="NextLevelController" type="Node2D" parent="."]
 script = ExtResource("4_y2rke")
+nextLevelScene = ExtResource("6_uteio")
 
 [node name="FunctionTest" type="Node2D" parent="."]
 script = ExtResource("5_l8qpn")

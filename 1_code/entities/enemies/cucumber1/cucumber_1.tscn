@@ -18,10 +18,11 @@ animations = [{
 radius = 24.0
 height = 112.0
 
-[node name="enemy" type="RigidBody2D"]
+[node name="Cucumber1" type="RigidBody2D" node_paths=PackedStringArray("animatedSprite2D")]
 collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_qwhyc")
+animatedSprite2D = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
