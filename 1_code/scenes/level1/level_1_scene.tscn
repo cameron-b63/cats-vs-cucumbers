@@ -1,16 +1,18 @@
-[gd_scene load_steps=22 format=4 uid="uid://b2ym33q2241o"]
+[gd_scene load_steps=24 format=4 uid="uid://b2ym33q2241o"]
 
 [ext_resource type="Texture2D" uid="uid://b8hxy4ug08fb5" path="res://scenes/level1/assets/TileSheet1.png" id="1_5nnbe"]
 [ext_resource type="Texture2D" uid="uid://b7b3q5pn3m8uy" path="res://scenes/level1/assets/Background_Layer1.png" id="1_sgr6f"]
+[ext_resource type="Script" path="res://scenes/level1/Level1Scene.cs" id="1_wvlw1"]
 [ext_resource type="Texture2D" uid="uid://c1xdm2j4st27j" path="res://scenes/level1/assets/TileSheet2.png" id="2_0tcy8"]
-[ext_resource type="Script" path="res://entities/power_up/PowerUpController.cs" id="2_mtg6i"]
+[ext_resource type="PackedScene" uid="uid://dci0pacw056j4" path="res://scenes/level2/level2.tscn" id="2_j4clg"]
+[ext_resource type="Script" path="res://controllers/PowerUpController.cs" id="2_mtg6i"]
 [ext_resource type="Texture2D" uid="uid://o5ycwlsasp1m" path="res://scenes/level1/assets/Background_Layer2.png" id="2_olg8q"]
 [ext_resource type="Texture2D" uid="uid://ddmieg2nytmoi" path="res://scenes/level1/assets/Background_Layer3.png" id="3_4kcgv"]
-[ext_resource type="Script" path="res://entities/enemies/cucumber1/Cucumber1Controller.cs" id="3_85i7q"]
+[ext_resource type="Script" path="res://controllers/Cucumber1Controller.cs" id="3_85i7q"]
 [ext_resource type="Texture2D" uid="uid://c4vi3e758i8jw" path="res://scenes/level1/assets/TileSheet3.png" id="3_530w6"]
 [ext_resource type="PackedScene" uid="uid://4kqtgr8np40m" path="res://entities/power_up/PowerUp.tscn" id="3_o4efn"]
 [ext_resource type="Texture2D" uid="uid://dds45lc6dq5f6" path="res://scenes/level1/assets/Background_Layer5.png" id="4_vywd7"]
-[ext_resource type="Script" path="res://entities/next_level/NextLevelController.cs" id="4_y2rke"]
+[ext_resource type="Script" path="res://controllers/NextLevelController.cs" id="4_y2rke"]
 [ext_resource type="PackedScene" uid="uid://cipllyg5q5se5" path="res://entities/enemies/cucumber1/cucumber_1.tscn" id="5_dwho7"]
 [ext_resource type="Script" path="res://tests/FunctionTest.cs" id="5_l8qpn"]
 [ext_resource type="Texture2D" uid="uid://b4ybadyv0rly3" path="res://scenes/level1/assets/Background_Layer4.png" id="5_vi0l4"]
@@ -892,6 +894,8 @@ sources/1 = SubResource("TileSetAtlasSource_7wcfk")
 sources/2 = SubResource("TileSetAtlasSource_g74w0")
 
 [node name="Level1" type="Node2D"]
+script = ExtResource("1_wvlw1")
+NextLevelScene = ExtResource("2_j4clg")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
