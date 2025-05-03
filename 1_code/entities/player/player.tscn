@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://t7hb3u2oh4g5"]
+[gd_scene load_steps=6 format=3 uid="uid://t7hb3u2oh4g5"]
 
 [ext_resource type="Script" path="res://entities/player/Player.cs" id="1_h34xs"]
 [ext_resource type="Texture2D" uid="uid://poowmb1jlwpv" path="res://icon.svg" id="2_asr7v"]
@@ -16,6 +16,9 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_73ke0"]
 size = Vector2(123, 123)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2r8pp"]
+size = Vector2(126, 35.5)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_animatedSprite2D") groups=["Player"]]
 position = Vector2(575, 425)
@@ -39,3 +42,13 @@ drag_vertical_enabled = true
 drag_left_margin = 0.4
 drag_top_margin = 1.0
 drag_right_margin = 0.0
+
+[node name="AttackHitBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitBox"]
+position = Vector2(128, 0)
+shape = SubResource("RectangleShape2D_2r8pp")
+
+[connection signal="body_entered" from="AttackHitBox" to="." method="_on_attackHitBox_body_entered"]

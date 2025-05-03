@@ -22,7 +22,7 @@ height = 112.0
 
 [node name="Cucumber1" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite2D")]
 collision_layer = 8
-collision_mask = 4
+collision_mask = 20
 script = ExtResource("1_qwhyc")
 animatedSprite2D = NodePath("AnimatedSprite2D")
 

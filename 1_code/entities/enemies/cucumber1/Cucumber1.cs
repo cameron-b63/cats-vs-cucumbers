@@ -10,7 +10,11 @@ public partial class Cucumber1 : CharacterBody2D
 	[Export] public float ChaseRange = 250f;
 	public float gravity = 400f;
 	public Vector2 velocity = Vector2.Zero;
-
+	
+	[Export]
+	public int MaxHealth { get; set; } = 3;
+	public int CurrentHealth;
+	
 	private bool moveLeft = true;
 	
 	[Export]
@@ -19,6 +23,7 @@ public partial class Cucumber1 : CharacterBody2D
 	public override void _Ready()
 	{
 		GD.Print("Cucumber 1 is ready to go.");
+		CurrentHealth = MaxHealth;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -67,5 +72,21 @@ public partial class Cucumber1 : CharacterBody2D
 			}
 			GD.Print("Player touched cucumber!");
 		}
+	}
+	
+	public void CucumberTakeDamage(int amount)
+	{
+		CurrentHealth -= amount;
+		
+		if(CurrentHealth <= 0)
+		{
+			CallDeferred(nameof(CucumberDie));
+		}
+	}
+	
+	private void CucumberDie()
+	{
+		GD.Print("Enemy died !");
+		QueueFree();
 	}
 }
