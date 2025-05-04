@@ -73,7 +73,7 @@ text = "Let's Play!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="CharacterSelectButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 433.0
 offset_top = 378.0

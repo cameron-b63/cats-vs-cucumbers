@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coixgxoutmxkv"
-path="res://.godot/imported/download.png-5205451c49ea1ba0ddfdb069cb32a799.ctex"
+uid="uid://bnknobys38nsg"
+path="res://.godot/imported/MageCat.png-1425435e1ad490c98ea864d0282e71e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/player/Assets/download.png"
-dest_files=["res://.godot/imported/download.png-5205451c49ea1ba0ddfdb069cb32a799.ctex"]
+source_file="res://entities/player/Assets/MageCat.png"
+dest_files=["res://.godot/imported/MageCat.png-1425435e1ad490c98ea864d0282e71e8.ctex"]
 
 [params]
 

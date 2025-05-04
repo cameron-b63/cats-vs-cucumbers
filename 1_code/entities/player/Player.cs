@@ -22,19 +22,59 @@ public partial class Player : CharacterBody2D
 	[Export]
 	private AnimatedSprite2D _animatedSprite2D;
 	private Area2D _attackHitBox;
+	
+	private bool _isAttacking = false;
+	private bool _facingRight = true;
+	private string _selectedCharacter = "";
+	private string _attackAnimation = "";
+	private Vector2 _defaultHitboxPosition;
 
 	public override void _Ready()
 	{
+		// set current health
 		CurrentHealth = MaxHealth;
-		_attackHitBox = GetNode<Area2D>("AttackHitBox");
-		_attackHitBox.Monitoring = false; // Start disabled
+		
+		// gets the selected character
+		var selected = Global.SelectedCharacter;
+		_selectedCharacter = selected;
+		_attackAnimation = selected + "Attack";
+		_animatedSprite2D.Play(_selectedCharacter);
+		
+		// get animations and attack hitbox for attack control
+		GetNode<Area2D>("SwordsmanAttack").Visible = false;
+		GetNode<Area2D>("SwordsmanAttack").Monitoring = false;
+		GetNode<Area2D>("BerserkerAttack").Visible = false;
+		GetNode<Area2D>("BerserkerAttack").Monitoring = false;
+		GetNode<Area2D>("MageAttack").Visible = false;
+		GetNode<Area2D>("MageAttack").Monitoring = false;
+
+		// Assign correct hitbox
+		_attackHitBox = GetNodeOrNull<Area2D>(_attackAnimation);
+
+		if (_attackHitBox == null)
+		{
+			GD.PushError($"[Player.cs] Could not find hitbox at path: {_attackHitBox}");
+			return; // prevent the rest of _Ready() from running
+		}
+	
+		// Set the hitbox to true
+		_attackHitBox.Visible = true;
+		_attackHitBox.Monitoring = false;
+
+		// Set animation
+		_animatedSprite2D.Play(_selectedCharacter);
+		
+		// Listen for animation finished
+		_animatedSprite2D.AnimationFinished += OnAnimationFinished;
+		
+		_defaultHitboxPosition = _attackHitBox.Position;
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
 
-		// Apply gravityw
+		// Apply gravity
 		if (!IsOnFloor())
 			velocity.Y += Gravity * (float)delta;
 
@@ -58,17 +98,23 @@ public partial class Player : CharacterBody2D
 		Velocity = velocity;
 		MoveAndSlide();
 
-		// Handle animations
-		if (direction.X != 0)
+		// Handles animations
+		if (!_isAttacking)
 		{
-			_animatedSprite2D.FlipH = direction.X < 0;
-			_animatedSprite2D.Play();
-		}
-		else
-		{
-			_animatedSprite2D.Stop();
+			if (direction.X != 0)
+			{
+				_animatedSprite2D.FlipH = direction.X < 0;
+				_facingRight = direction.X > 0;
+				_animatedSprite2D.Play();
+				_attackHitBox.Scale = new Vector2(_facingRight ? 1 : -1, 1);
+			}
+			else
+			{
+				_animatedSprite2D.Stop();
+			}
 		}
 		
+		// if the player attacks, call the attack function
 		if(Input.IsActionJustPressed("player_attack"))
 		{
 			Attack();
@@ -77,6 +123,7 @@ public partial class Player : CharacterBody2D
 	
 	public void TakeDamage(int amount)
 	{
+		// tracks player health and signals if the player dies
 		CurrentHealth -= amount;
 		
 		if(CurrentHealth <= 0)
@@ -87,29 +134,48 @@ public partial class Player : CharacterBody2D
 	
 	private void Die()
 	{
+		// death signal
 		GD.Print("Player died :(");
 		Global.Instance.MainScene.StartLevel(Global.Instance.CurrentLevelSource);
 	}
 	
 	private void Attack()
 	{
-		 _animatedSprite2D.Play("attack");
+		// prevents a retrigger
+		if (_isAttacking  || _attackHitBox == null) return; 
+		
+		// handles attack animations
+		_isAttacking = true;
+		_animatedSprite2D.Play(_attackAnimation);
+		_animatedSprite2D.Frame = 0;
 		_attackHitBox.Monitoring = true;
-		GetTree().CreateTimer(0.1f).Timeout += () =>
-		{
-			if (_attackHitBox != null && !_attackHitBox.IsQueuedForDeletion())
-			{
-				_attackHitBox.Monitoring = false;
-			}
-		};
+		
+		// flips the player's attack hitbox if they face the other direction
+		//_attackHitBox.Scale = new Vector2(_facingRight ? 1 : -1, 1);
+		_attackHitBox.Scale = new Vector2(_facingRight ? 1 : -1, 1);
 	}
 	
 	private void _on_attackHitBox_body_entered(Node2D body)
 	{
+		if (_attackHitBox == null || !_attackHitBox.Monitoring) return;
+			
+		// if the player hits a cucumber, signal the cucumber to lose life
 		if(body is Cucumber1 cucumber && cucumber != null)
 		{
 			cucumber.CucumberTakeDamage(1);
 			GD.Print("Cucumber hit sword");
+			_attackHitBox.SetDeferred("monitoring", false);
+		}
+	}
+	
+	private void OnAnimationFinished()
+	{
+		// handles disabling the attack animation after the player finishes
+		if (_animatedSprite2D.Animation == _attackAnimation)
+		{
+			_isAttacking = false;
+			_attackHitBox.Monitoring = false;
+			_animatedSprite2D.Play(_selectedCharacter);
 		}
 	}
 }

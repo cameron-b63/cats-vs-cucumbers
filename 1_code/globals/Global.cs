@@ -12,6 +12,9 @@ public partial class Global : Node
 	public PackedScene CurrentLevelSource { get; set; }
 	public PackedScene NextLevelSource { get; set; }
 	
+	// Default character
+	public static string SelectedCharacter = "Mage";
+	
 	// Public primitives
 	public bool ShouldLoadNextLevel { get; set; }	// On final level, set to false -> will go to win screen
 	

@@ -17,9 +17,13 @@ public partial class MainScene : Node
 	[Export]
 	public PackedScene HUDScene;	// Store the HUD here
 	
+	[Export]
+	public PackedScene CharacterSelectScene; // Store the character select scene
+	
 	private Control _menuInstance;	// Store the instantiated menu scene
 	private Node2D _levelInstance;	// Instantiated current level
 	private Control _hudInstance;	// Instantiated HUD
+	private Control _characterSelectInstance; // Instantiated character select
 	
 	// Make the child nodes of the main scene publicly available
 	[Export]
@@ -30,6 +34,9 @@ public partial class MainScene : Node
 	
 	[Export]
 	public Node HUDLayer;
+	
+	[Export]
+	public Node CharacterSelectLayer;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -100,12 +107,24 @@ public partial class MainScene : Node
 		HUDLayer.AddChild(_hudInstance);
 	}
 	
+	public void GetCharacterSelect()
+	{
+		ClearAll();
+		
+		// Instantiate the menu	
+		_characterSelectInstance = CharacterSelectScene.Instantiate<Control>();
+		
+		// Put menu instance into the menu layer
+		CharacterSelectLayer.AddChild(_characterSelectInstance);
+	}
+	
 	// Clear all layers.
 	private void ClearAll()
 	{
 		FreeChildren(MenuLayer);
 		FreeChildren(LevelLayer);
 		FreeChildren(HUDLayer);
+		FreeChildren(CharacterSelectLayer);
 	}
 	
 	// Helper that queues each child of the passed layer for freeing (clearing)
