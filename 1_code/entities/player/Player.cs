@@ -21,10 +21,13 @@ public partial class Player : CharacterBody2D
 
 	[Export]
 	private AnimatedSprite2D _animatedSprite2D;
+	private Area2D _attackHitBox;
 
 	public override void _Ready()
 	{
 		CurrentHealth = MaxHealth;
+		_attackHitBox = GetNode<Area2D>("AttackHitBox");
+		_attackHitBox.Monitoring = false; // Start disabled
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -65,6 +68,11 @@ public partial class Player : CharacterBody2D
 		{
 			_animatedSprite2D.Stop();
 		}
+		
+		if(Input.IsActionJustPressed("player_attack"))
+		{
+			Attack();
+		}
 	}
 	
 	public void TakeDamage(int amount)
@@ -81,6 +89,19 @@ public partial class Player : CharacterBody2D
 	{
 		GD.Print("Player died :(");
 		Global.Instance.MainScene.StartLevel(Global.Instance.CurrentLevelSource);
+	}
+	
+	private void Attack()
+	{
+		 _animatedSprite2D.Play("attack");
+		_attackHitBox.Monitoring = true;
+		GetTree().CreateTimer(0.1f).Timeout += () =>
+		{
+			if (_attackHitBox != null && !_attackHitBox.IsQueuedForDeletion())
+			{
+				_attackHitBox.Monitoring = false;
+			}
+		};
 	}
 	
 	private void _on_attackHitBox_body_entered(Node2D body)
