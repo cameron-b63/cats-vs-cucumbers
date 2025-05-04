@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://entities/player/Player.cs" id="1_h34xs"]
 [ext_resource type="Texture2D" uid="uid://4xavdx84pjpu" path="res://entities/player/Assets/Berserker Walk.png" id="2_awygy"]
+[ext_resource type="PackedScene" uid="uid://csjfp8npibnre" path="res://entities/player/MageAttack.tscn" id="2_c6bsh"]
 [ext_resource type="Texture2D" uid="uid://8p330syfl6vl" path="res://entities/player/Assets/Swordsman Attack.png" id="2_s6ys5"]
 [ext_resource type="Texture2D" uid="uid://ch3h2wo18avqm" path="res://entities/player/Assets/Berserker Attack.png" id="3_r530b"]
 [ext_resource type="Texture2D" uid="uid://bnknobys38nsg" path="res://entities/player/Assets/MageCat.png" id="4_2dg11"]
@@ -111,25 +112,23 @@ size = Vector2(83.6354, 32.3157)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7i83y"]
 size = Vector2(58.3958, 46.554)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_w10ts"]
-
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_animatedSprite2D") groups=["Player"]]
 position = Vector2(575, 425)
 collision_mask = 6
 script = ExtResource("1_h34xs")
 _animatedSprite2D = NodePath("AnimatedSprite2D")
+MageProjectileScene = ExtResource("2_c6bsh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-3, -1)
 sprite_frames = SubResource("SpriteFrames_8a7r5")
-animation = &"Mage"
+animation = &"Berserker"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-20.5, 5.75)
 shape = SubResource("CapsuleShape2D_te6oj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-visible = false
 position = Vector2(0, -100)
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
@@ -139,12 +138,10 @@ drag_top_margin = 1.0
 drag_right_margin = 0.0
 
 [node name="SwordsmanAttack" type="Area2D" parent="."]
-visible = false
 collision_layer = 16
 collision_mask = 8
 
 [node name="SwordsmanAttackHitBox" type="CollisionShape2D" parent="SwordsmanAttack"]
-visible = false
 position = Vector2(64.6938, 9.2872)
 rotation = 2.61799
 shape = SubResource("RectangleShape2D_2r8pp")
@@ -162,10 +159,6 @@ shape = SubResource("RectangleShape2D_7i83y")
 
 [node name="MageAttack" type="Area2D" parent="."]
 visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MageAttack"]
-visible = false
-shape = SubResource("CircleShape2D_w10ts")
 
 [connection signal="body_entered" from="SwordsmanAttack" to="." method="_on_attackHitBox_body_entered"]
 [connection signal="body_entered" from="BerserkerAttack" to="." method="_on_attackHitBox_body_entered"]

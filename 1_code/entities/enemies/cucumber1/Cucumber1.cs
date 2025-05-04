@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+
 // written by: Gabe
 // refactored by: Cameron
 
@@ -12,7 +13,7 @@ public partial class Cucumber1 : CharacterBody2D
 	public Vector2 velocity = Vector2.Zero;
 	
 	[Export]
-	public int MaxHealth { get; set; } = 3;
+	public int MaxHealth { get; set; } = 5;
 	public int CurrentHealth;
 	
 	private bool moveLeft = true;
@@ -23,7 +24,9 @@ public partial class Cucumber1 : CharacterBody2D
 	public override void _Ready()
 	{
 		GD.Print("Cucumber 1 is ready to go.");
-		CurrentHealth = MaxHealth;
+		Random rnd = new Random();
+		int health = rnd.Next(1, MaxHealth + 1);
+		CurrentHealth = health;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
