@@ -35,9 +35,6 @@ public partial class MainScene : Node
 	[Export]
 	public Node HUDLayer;
 	
-	[Export]
-	public Node CharacterSelectLayer;
-	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -114,8 +111,8 @@ public partial class MainScene : Node
 		// Instantiate the menu	
 		_characterSelectInstance = CharacterSelectScene.Instantiate<Control>();
 		
-		// Put menu instance into the menu layer
-		CharacterSelectLayer.AddChild(_characterSelectInstance);
+		// Put character selection instance into the menu layer
+		MenuLayer.AddChild(_characterSelectInstance);
 	}
 	
 	// Clear all layers.
@@ -124,7 +121,6 @@ public partial class MainScene : Node
 		FreeChildren(MenuLayer);
 		FreeChildren(LevelLayer);
 		FreeChildren(HUDLayer);
-		FreeChildren(CharacterSelectLayer);
 	}
 	
 	// Helper that queues each child of the passed layer for freeing (clearing)

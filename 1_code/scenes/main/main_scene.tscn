@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://blx4ojl567ijh"]
+[gd_scene load_steps=7 format=3 uid="uid://blx4ojl567ijh"]
 
 [ext_resource type="Script" path="res://scenes/main/MainScene.cs" id="1_g3vkk"]
 [ext_resource type="PackedScene" uid="uid://t7hb3u2oh4g5" path="res://entities/player/player.tscn" id="2_gxh1d"]
 [ext_resource type="PackedScene" uid="uid://cat5i8uq2u3ud" path="res://menus/main_menu/MainMenu.tscn" id="2_uywnr"]
 [ext_resource type="PackedScene" uid="uid://cbwclficf04x0" path="res://ui/HUD.tscn" id="3_s1s2y"]
 [ext_resource type="PackedScene" uid="uid://cgg3wtn7gscwr" path="res://menus/win_screen/win_screen.tscn" id="4_bpr7g"]
+[ext_resource type="PackedScene" uid="uid://byjnvo565g188" path="res://menus/character_menu/character_select.tscn" id="6_stvgn"]
 
 [node name="MainScene" type="Node" node_paths=PackedStringArray("MenuLayer", "LevelLayer", "HUDLayer")]
 script = ExtResource("1_g3vkk")
@@ -12,6 +13,7 @@ PlayerScene = ExtResource("2_gxh1d")
 MainMenuScene = ExtResource("2_uywnr")
 WinScreen = ExtResource("4_bpr7g")
 HUDScene = ExtResource("3_s1s2y")
+CharacterSelectScene = ExtResource("6_stvgn")
 MenuLayer = NodePath("MenuLayer")
 LevelLayer = NodePath("LevelLayer")
 HUDLayer = NodePath("HUDLayer")
