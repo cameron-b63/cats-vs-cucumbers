@@ -19,10 +19,12 @@ radius = 24.0
 height = 112.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q8m5q"]
+radius = 21.0
+height = 108.0
 
 [node name="Cucumber1" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite2D")]
 collision_layer = 8
-collision_mask = 20
+collision_mask = 212
 script = ExtResource("1_qwhyc")
 animatedSprite2D = NodePath("AnimatedSprite2D")
 
@@ -31,6 +33,7 @@ scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_rm8du")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_bhpuw")
 
@@ -40,6 +43,7 @@ shape = SubResource("CapsuleShape2D_bhpuw")
 collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, -3)
 shape = SubResource("CapsuleShape2D_q8m5q")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

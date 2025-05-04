@@ -23,8 +23,15 @@ public partial class Player : CharacterBody2D
 	private AnimatedSprite2D _animatedSprite2D;
 	private Area2D _attackHitBox;
 	
+	[Export]
+	public PackedScene MageProjectileScene { get; set; }
+	
 	private bool _isAttacking = false;
 	private bool _facingRight = true;
+	
+	private float _mageAttackCooldown = 0.75f; // half a second cooldown
+	private float _lastMageAttackTime = -1f;
+	
 	private string _selectedCharacter = "";
 	private string _attackAnimation = "";
 	private Vector2 _defaultHitboxPosition;
@@ -54,7 +61,7 @@ public partial class Player : CharacterBody2D
 		if (_attackHitBox == null)
 		{
 			GD.PushError($"[Player.cs] Could not find hitbox at path: {_attackHitBox}");
-			return; // prevent the rest of _Ready() from running
+			return; 
 		}
 	
 		// Set the hitbox to true
@@ -67,6 +74,7 @@ public partial class Player : CharacterBody2D
 		// Listen for animation finished
 		_animatedSprite2D.AnimationFinished += OnAnimationFinished;
 		
+		// Sets default hitbox position
 		_defaultHitboxPosition = _attackHitBox.Position;
 	}
 
@@ -90,9 +98,7 @@ public partial class Player : CharacterBody2D
 
 		// Jump input
 		if (Input.IsActionJustPressed("jump") && IsOnFloor())
-		{
 			velocity.Y = JumpVelocity;
-		}
 
 		// Update velocity and move the character
 		Velocity = velocity;
@@ -116,48 +122,49 @@ public partial class Player : CharacterBody2D
 		
 		// if the player attacks, call the attack function
 		if(Input.IsActionJustPressed("player_attack"))
-		{
 			Attack();
-		}
 	}
 	
+	// Takes player's health whenever damamged
 	public void TakeDamage(int amount)
 	{
 		// tracks player health and signals if the player dies
 		CurrentHealth -= amount;
 		
 		if(CurrentHealth <= 0)
-		{
 			CallDeferred(nameof(Die));
-		}
 	}
 	
+	// Death signal
 	private void Die()
 	{
-		// death signal
 		GD.Print("Player died :(");
 		Global.Instance.MainScene.StartLevel(Global.Instance.CurrentLevelSource);
 	}
 	
+	// Executes the attack animation 
 	private void Attack()
 	{
-		// prevents a retrigger
-		if (_isAttacking  || _attackHitBox == null) return; 
-		
-		// handles attack animations
-		_isAttacking = true;
-		_animatedSprite2D.Play(_attackAnimation);
-		_animatedSprite2D.Frame = 0;
-		_attackHitBox.Monitoring = true;
-		
-		// flips the player's attack hitbox if they face the other direction
-		//_attackHitBox.Scale = new Vector2(_facingRight ? 1 : -1, 1);
-		_attackHitBox.Scale = new Vector2(_facingRight ? 1 : -1, 1);
+		if (_selectedCharacter == "Mage")
+			FireMageProjectile();
+		else
+		{
+			// prevents a retrigger
+			if (_isAttacking  || _attackHitBox == null) return; 
+			
+			// handles attack animations
+			_isAttacking = true;
+			_animatedSprite2D.Play(_attackAnimation);
+			_animatedSprite2D.Frame = 0;
+			_attackHitBox.Monitoring = true;
+		}
 	}
 	
+	// Checks if there is an enemy in the hitbox whenever the player attacks
 	private void _on_attackHitBox_body_entered(Node2D body)
 	{
-		if (_attackHitBox == null || !_attackHitBox.Monitoring) return;
+		if (_attackHitBox == null || !_attackHitBox.Monitoring) 
+			return;
 			
 		// if the player hits a cucumber, signal the cucumber to lose life
 		if(body is Cucumber1 cucumber && cucumber != null)
@@ -168,6 +175,7 @@ public partial class Player : CharacterBody2D
 		}
 	}
 	
+	// Resets the animation back to the normal animation
 	private void OnAnimationFinished()
 	{
 		// handles disabling the attack animation after the player finishes
@@ -177,5 +185,29 @@ public partial class Player : CharacterBody2D
 			_attackHitBox.Monitoring = false;
 			_animatedSprite2D.Play(_selectedCharacter);
 		}
+	}
+	
+	// Creates the projectile and shoots it from the spawn point
+	private void FireMageProjectile()
+	{
+		if (MageProjectileScene == null)
+	{
+		GD.PushError("MageProjectileScene not set.");
+		return;
+	}
+
+	// Prevent spamming based on elapsed time
+	if (Time.GetTicksMsec() - _lastMageAttackTime < _mageAttackCooldown * 1000)
+		return;
+
+		_lastMageAttackTime = Time.GetTicksMsec();
+
+		Node2D projectileInstance = MageProjectileScene.Instantiate<Node2D>();
+		projectileInstance.Position = GlobalPosition + new Vector2(_facingRight ? 30 : -30, 0);
+
+		if (projectileInstance is MageAttack mageProjectile)
+			mageProjectile.Direction = _facingRight ? Vector2.Right : Vector2.Left;
+
+		GetTree().CurrentScene.AddChild(projectileInstance);
 	}
 }
