@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://t7hb3u2oh4g5"]
 
 [ext_resource type="Script" path="res://entities/player/Player.cs" id="1_h34xs"]
-[ext_resource type="Texture2D" uid="uid://poowmb1jlwpv" path="res://icon.svg" id="2_asr7v"]
 [ext_resource type="Texture2D" uid="uid://blobj1i8bf1ml" path="res://entities/player/Assets/download - Copy.png" id="2_m1ija"]
 [ext_resource type="Texture2D" uid="uid://coixgxoutmxkv" path="res://entities/player/Assets/download.png" id="2_onqrv"]
+[ext_resource type="Texture2D" uid="uid://438npe2osp8t" path="res://entities/player/Swordsman.kra_1 (2).png" id="4_1uljo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8a7r5"]
 animations = [{
@@ -20,7 +20,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_asr7v")
+"texture": ExtResource("4_1uljo")
 }],
 "loop": true,
 "name": &"default",
@@ -42,6 +42,7 @@ _animatedSprite2D = NodePath("AnimatedSprite2D")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_8a7r5")
+frame_progress = 0.302528
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0.5)
