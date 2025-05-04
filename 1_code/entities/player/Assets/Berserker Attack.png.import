@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://438npe2osp8t"
-path="res://.godot/imported/Swordsman.kra_1 (2).png-eb67fbf6bd204661ff977924a2305ee7.ctex"
+uid="uid://ch3h2wo18avqm"
+path="res://.godot/imported/Berserker Attack.png-c3673a58355bd72ddede7d569e5a6c8a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/player/Swordsman.kra_1 (2).png"
-dest_files=["res://.godot/imported/Swordsman.kra_1 (2).png-eb67fbf6bd204661ff977924a2305ee7.ctex"]
+source_file="res://entities/player/Assets/Berserker Attack.png"
+dest_files=["res://.godot/imported/Berserker Attack.png-c3673a58355bd72ddede7d569e5a6c8a.ctex"]
 
 [params]
 

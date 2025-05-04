@@ -1,37 +1,117 @@
-[gd_scene load_steps=8 format=3 uid="uid://t7hb3u2oh4g5"]
+[gd_scene load_steps=21 format=3 uid="uid://t7hb3u2oh4g5"]
 
 [ext_resource type="Script" path="res://entities/player/Player.cs" id="1_h34xs"]
-[ext_resource type="Texture2D" uid="uid://blobj1i8bf1ml" path="res://entities/player/Assets/download - Copy.png" id="2_m1ija"]
-[ext_resource type="Texture2D" uid="uid://coixgxoutmxkv" path="res://entities/player/Assets/download.png" id="2_onqrv"]
-[ext_resource type="Texture2D" uid="uid://438npe2osp8t" path="res://entities/player/Swordsman.kra_1 (2).png" id="4_1uljo"]
+[ext_resource type="Texture2D" uid="uid://4xavdx84pjpu" path="res://entities/player/Assets/Berserker Walk.png" id="2_awygy"]
+[ext_resource type="Texture2D" uid="uid://8p330syfl6vl" path="res://entities/player/Assets/Swordsman Attack.png" id="2_s6ys5"]
+[ext_resource type="Texture2D" uid="uid://ch3h2wo18avqm" path="res://entities/player/Assets/Berserker Attack.png" id="3_r530b"]
+[ext_resource type="Texture2D" uid="uid://bnknobys38nsg" path="res://entities/player/Assets/MageCat.png" id="4_2dg11"]
+[ext_resource type="Texture2D" uid="uid://o7te8dtam33v" path="res://entities/player/Assets/Swordsman Walk.png" id="4_vb8fb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3j2w"]
+atlas = ExtResource("2_awygy")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88c8j"]
+atlas = ExtResource("2_awygy")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc4qi"]
+atlas = ExtResource("3_r530b")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03pli"]
+atlas = ExtResource("3_r530b")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ple2"]
+atlas = ExtResource("3_r530b")
+region = Rect2(1024, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64wif"]
+atlas = ExtResource("4_vb8fb")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8hyu"]
+atlas = ExtResource("4_vb8fb")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0akx"]
+atlas = ExtResource("2_s6ys5")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51ybw"]
+atlas = ExtResource("2_s6ys5")
+region = Rect2(512, 0, 256, 256)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8a7r5"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_m1ija")
+"texture": SubResource("AtlasTexture_j3j2w")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_onqrv")
+"texture": SubResource("AtlasTexture_88c8j")
 }],
-"loop": false,
-"name": &"attack",
+"loop": true,
+"name": &"Berserker",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_1uljo")
+"texture": SubResource("AtlasTexture_cc4qi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03pli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ple2")
+}],
+"loop": false,
+"name": &"BerserkerAttack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_2dg11")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Mage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64wif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8hyu")
+}],
+"loop": true,
+"name": &"Swordsman",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0akx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51ybw")
+}],
+"loop": false,
+"name": &"SwordsmanAttack",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_73ke0"]
-size = Vector2(123, 123)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_te6oj"]
+radius = 36.25
+height = 174.5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2r8pp"]
-size = Vector2(126, 35.5)
+size = Vector2(83.6354, 32.3157)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7i83y"]
+size = Vector2(58.3958, 46.554)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w10ts"]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_animatedSprite2D") groups=["Player"]]
 position = Vector2(575, 425)
@@ -40,15 +120,16 @@ script = ExtResource("1_h34xs")
 _animatedSprite2D = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, 0)
+position = Vector2(-3, -1)
 sprite_frames = SubResource("SpriteFrames_8a7r5")
-frame_progress = 0.302528
+animation = &"Mage"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_73ke0")
+position = Vector2(-20.5, 5.75)
+shape = SubResource("CapsuleShape2D_te6oj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 position = Vector2(0, -100)
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
@@ -57,12 +138,34 @@ drag_left_margin = 0.4
 drag_top_margin = 1.0
 drag_right_margin = 0.0
 
-[node name="AttackHitBox" type="Area2D" parent="."]
+[node name="SwordsmanAttack" type="Area2D" parent="."]
+visible = false
 collision_layer = 16
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitBox"]
-position = Vector2(128, 0)
+[node name="SwordsmanAttackHitBox" type="CollisionShape2D" parent="SwordsmanAttack"]
+visible = false
+position = Vector2(64.6938, 9.2872)
+rotation = 2.61799
 shape = SubResource("RectangleShape2D_2r8pp")
 
-[connection signal="body_entered" from="AttackHitBox" to="." method="_on_attackHitBox_body_entered"]
+[node name="BerserkerAttack" type="Area2D" parent="."]
+visible = false
+collision_layer = 32
+collision_mask = 8
+
+[node name="BerserkerAttackHitBox" type="CollisionShape2D" parent="BerserkerAttack"]
+visible = false
+position = Vector2(74.11, -7.94318)
+rotation = 2.41728
+shape = SubResource("RectangleShape2D_7i83y")
+
+[node name="MageAttack" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MageAttack"]
+visible = false
+shape = SubResource("CircleShape2D_w10ts")
+
+[connection signal="body_entered" from="SwordsmanAttack" to="." method="_on_attackHitBox_body_entered"]
+[connection signal="body_entered" from="BerserkerAttack" to="." method="_on_attackHitBox_body_entered"]

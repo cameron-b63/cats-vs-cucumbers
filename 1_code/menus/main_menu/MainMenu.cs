@@ -8,13 +8,17 @@ public partial class MainMenu : Control
 	public PackedScene Level1Scene;
 	
 	private Button _playButton;
+	private Button _characterSelectButton;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_playButton = GetNode<Button>("PlayButton");
+		_characterSelectButton = GetNode<Button>("CharacterSelectButton");
+		
 		// Put our OnPlayPressed function in the Button's action
 		_playButton.Pressed += OnPlayPressed;
+		_characterSelectButton.Pressed += OnCharacterSelectPressed;
 		
 		// Put level 1 in as the next level
 		if (Level1Scene == null)
@@ -40,7 +44,18 @@ public partial class MainMenu : Control
 		// Start level 1
 		main.StartLevel(Global.Instance.NextLevelSource);
 	}
-
+	
+	private void OnCharacterSelectPressed()
+	{
+		MainScene main = Global.Instance.MainScene;
+		if(main == null)
+		{
+			GD.PrintErr("MainScene not registered on Global. Check MainScene's .tscn.");
+			return;
+		}
+		main.GetCharacterSelect();
+	}
+	
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
