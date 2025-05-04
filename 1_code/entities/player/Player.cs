@@ -34,7 +34,7 @@ public partial class Player : CharacterBody2D
 	
 	private string _selectedCharacter = "";
 	private string _attackAnimation = "";
-	private Vector2 _defaultHitboxPosition;
+	private Vector2 _originalHitBoxOffset;
 
 	public override void _Ready()
 	{
@@ -75,7 +75,7 @@ public partial class Player : CharacterBody2D
 		_animatedSprite2D.AnimationFinished += OnAnimationFinished;
 		
 		// Sets default hitbox position
-		_defaultHitboxPosition = _attackHitBox.Position;
+		_originalHitBoxOffset = _attackHitBox.Position;
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -87,14 +87,14 @@ public partial class Player : CharacterBody2D
 			velocity.Y += Gravity * (float)delta;
 
 		// Movement input
-		Vector2 direction = Vector2.Zero;
+		Vector2 _direction = Vector2.Zero;
 
 		if (Input.IsActionPressed("move_right"))
-			direction.X += 1;
+			_direction.X += 1;
 		if (Input.IsActionPressed("move_left"))
-			direction.X -= 1;
+			_direction.X -= 1;
 
-		velocity.X = direction.X * Speed;
+		velocity.X = _direction.X * Speed;
 
 		// Jump input
 		if (Input.IsActionJustPressed("jump") && IsOnFloor())
@@ -107,12 +107,18 @@ public partial class Player : CharacterBody2D
 		// Handles animations
 		if (!_isAttacking)
 		{
-			if (direction.X != 0)
+			if (_direction.X != 0)
 			{
-				_animatedSprite2D.FlipH = direction.X < 0;
-				_facingRight = direction.X > 0;
+				// flip sprite
+				bool nowFacingRight = _direction.X > 0;
+				_animatedSprite2D.FlipH = !nowFacingRight;
+				_facingRight = nowFacingRight;
+
 				_animatedSprite2D.Play();
-				_attackHitBox.Scale = new Vector2(_facingRight ? 1 : -1, 1);
+
+				// reposition hitbox rather than scaling
+				float xOff = MathF.Abs(_originalHitBoxOffset.X);
+				_attackHitBox.Position = new Vector2(_facingRight ? xOff : -xOff, _originalHitBoxOffset.Y);
 			}
 			else
 			{
