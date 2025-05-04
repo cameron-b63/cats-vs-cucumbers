@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Level1Scene : Node2D
+public partial class Level2 : Node2D
 {
 	[Export]
 	private PackedScene _next_level_scene;
@@ -9,10 +9,11 @@ public partial class Level1Scene : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		// Same level advance logic as level 1
 		// Load Level 2 into the Global singleton
 		if (_next_level_scene == null)
 		{
-			GD.PrintErr("Level 2 not linked to level 1.");
+			GD.PrintErr("Level 3 not linked to level 2.");
 			return;
 		}
 		

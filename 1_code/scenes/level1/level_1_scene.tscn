@@ -895,7 +895,7 @@ sources/2 = SubResource("TileSetAtlasSource_g74w0")
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_wvlw1")
-NextLevelScene = ExtResource("2_j4clg")
+_next_level_scene = ExtResource("2_j4clg")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 

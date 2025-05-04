@@ -12,6 +12,9 @@ public partial class MainScene : Node
 	public PackedScene MainMenuScene;	// Store the main menu scene
 	
 	[Export]
+	public PackedScene WinScreen;	// Store the win screen
+	
+	[Export]
 	public PackedScene HUDScene;	// Store the HUD here
 	
 	private Control _menuInstance;	// Store the instantiated menu scene
@@ -51,6 +54,17 @@ public partial class MainScene : Node
 		
 		// Let game know it's ok to load the next level
 		Global.Instance.ShouldLoadNextLevel = true;
+	}
+	
+	public void ShowWinScreen()
+	{
+		ClearAll();
+		
+		// Instantiate the win screen
+		_menuInstance = WinScreen.Instantiate<Control>();
+		
+		// Load the win screen into the MenuLayer
+		MenuLayer.AddChild(_menuInstance);
 	}
 	
 	// As the name suggests, responsible for starting a level.

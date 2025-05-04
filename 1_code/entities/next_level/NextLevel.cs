@@ -36,6 +36,9 @@ public partial class NextLevel : Area2D
 		if (Global.Instance.ShouldLoadNextLevel)
 		{
 			Global.Instance.MainScene.StartLevel(Global.Instance.NextLevelSource);	
+		} else 
+		{
+			Global.Instance.MainScene.ShowWinScreen();
 		}
 	}
 }
