@@ -12,7 +12,7 @@ public partial class NextLevelController : Node2D
 	{
 		// calls the level marker creator
 		// TODO: make levels spawn on top of a Node2D "LevelEnd" found in each level file.
-		SpawnLevelMarker(new Vector2(2700, 520));
+		SpawnLevelMarker(new Vector2(3500, 450));
 	}
 	
 	public void SpawnLevelMarker(Vector2 position)
