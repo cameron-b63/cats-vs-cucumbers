@@ -116,9 +116,7 @@ public partial class Player : CharacterBody2D
 
 				_animatedSprite2D.Play();
 
-				// reposition hitbox rather than scaling
-				float xOff = MathF.Abs(_originalHitBoxOffset.X);
-				_attackHitBox.Position = new Vector2(_facingRight ? xOff : -xOff, _originalHitBoxOffset.Y);
+				_attackHitBox.Scale = new Vector2(_facingRight ? 1 : -1, 1);
 			}
 			else
 			{
@@ -197,23 +195,23 @@ public partial class Player : CharacterBody2D
 	private void FireMageProjectile()
 	{
 		if (MageProjectileScene == null)
-	{
-		GD.PushError("MageProjectileScene not set.");
-		return;
-	}
+		{
+			GD.PushError("MageProjectileScene not set.");
+			return;
+		}
 
-	// Prevent spamming based on elapsed time
-	if (Time.GetTicksMsec() - _lastMageAttackTime < _mageAttackCooldown * 1000)
-		return;
+		// Prevent spamming based on elapsed time
+		if (Time.GetTicksMsec() - _lastMageAttackTime < _mageAttackCooldown * 1000)
+			return;
 
-		_lastMageAttackTime = Time.GetTicksMsec();
+			_lastMageAttackTime = Time.GetTicksMsec();
 
-		Node2D projectileInstance = MageProjectileScene.Instantiate<Node2D>();
-		projectileInstance.Position = GlobalPosition + new Vector2(_facingRight ? 30 : -30, 0);
+			Node2D projectileInstance = MageProjectileScene.Instantiate<Node2D>();
+			projectileInstance.Position = GlobalPosition + new Vector2(_facingRight ? 30 : -30, 0);
 
-		if (projectileInstance is MageAttack mageProjectile)
-			mageProjectile.Direction = _facingRight ? Vector2.Right : Vector2.Left;
+			if (projectileInstance is MageAttack mageProjectile)
+				mageProjectile.Direction = _facingRight ? Vector2.Right : Vector2.Left;
 
-		GetTree().CurrentScene.AddChild(projectileInstance);
-	}
+			GetTree().CurrentScene.AddChild(projectileInstance);
+		}
 }

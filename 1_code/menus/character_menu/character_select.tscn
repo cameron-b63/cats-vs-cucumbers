@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://byjnvo565g188"]
+[gd_scene load_steps=6 format=3 uid="uid://byjnvo565g188"]
 
 [ext_resource type="Script" path="res://menus/character_menu/CharacterSelect.cs" id="1_7kfh5"]
+[ext_resource type="Texture2D" uid="uid://drpgj5tng5deu" path="res://menus/main_menu/assets/Teal.png" id="2_2oyiq"]
+[ext_resource type="Texture2D" uid="uid://bir7as7btjwfo" path="res://menus/main_menu/assets/Box_Blue_Rounded.png" id="3_le0sl"]
+[ext_resource type="FontFile" uid="uid://dhqy3nd8oors8" path="res://fonts/LuckiestGuy-Regular.ttf" id="4_5dwee"]
+[ext_resource type="Texture2D" uid="uid://dgedlufrrgese" path="res://menus/main_menu/assets/ButtonText_Orange_OnOffBackground.png" id="5_4txsn"]
 
 [node name="CharacterSelect" type="Control"]
 layout_mode = 3
@@ -11,17 +15,61 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7kfh5")
 
+[node name="TealColor" type="TextureRect" parent="."]
+offset_left = -276.0
+offset_top = -218.0
+offset_right = 748.0
+offset_bottom = 806.0
+scale = Vector2(120.207, 1.08877)
+texture = ExtResource("2_2oyiq")
+
+[node name="BlueBack" type="TextureRect" parent="."]
+offset_left = 338.0
+offset_top = 59.0
+offset_right = 1847.0
+offset_bottom = 1569.0
+scale = Vector2(0.345682, 0.364002)
+texture = ExtResource("3_le0sl")
+stretch_mode = 5
+
 [node name="SwordsmanButton" type="Button" parent="."]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 434.0
+offset_top = 67.0
+offset_right = 766.0
+offset_bottom = 289.0
+theme_override_colors/font_color = Color(0.253575, 0.169709, 0.00833408, 1)
+theme_override_constants/h_separation = 0
+theme_override_fonts/font = ExtResource("4_5dwee")
+theme_override_font_sizes/font_size = 30
+text = "Swordsman
+"
+icon = ExtResource("5_4txsn")
+flat = true
+icon_alignment = 1
 
 [node name="BerserkerButton" type="Button" parent="."]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 432.0
+offset_top = 221.0
+offset_right = 764.0
+offset_bottom = 443.0
+theme_override_colors/font_color = Color(0.253575, 0.169709, 0.00833408, 1)
+theme_override_fonts/font = ExtResource("4_5dwee")
+theme_override_font_sizes/font_size = 30
+text = "Berserker
+"
+icon = ExtResource("5_4txsn")
+flat = true
+icon_alignment = 1
 
 [node name="MageButton" type="Button" parent="."]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 434.0
+offset_top = 375.0
+offset_right = 766.0
+offset_bottom = 597.0
+theme_override_colors/font_color = Color(0.253575, 0.169709, 0.00833408, 1)
+theme_override_fonts/font = ExtResource("4_5dwee")
+theme_override_font_sizes/font_size = 30
+text = "Mage"
+icon = ExtResource("5_4txsn")
+flat = true
+icon_alignment = 1
