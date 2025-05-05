@@ -13,7 +13,7 @@ public partial class Global : Node
 	public PackedScene NextLevelSource { get; set; }
 	
 	// Default character
-	public static string SelectedCharacter = "Berserker";
+	public static string SelectedCharacter = "Swordsman";
 	
 	// Public primitives
 	public bool ShouldLoadNextLevel { get; set; }	// On final level, set to false -> will go to win screen
@@ -23,10 +23,5 @@ public partial class Global : Node
 	{
 		Instance = this;
 		GD.Print("Global singleton is ready to go.");
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
 	}
 }

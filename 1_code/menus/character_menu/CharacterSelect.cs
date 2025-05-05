@@ -24,19 +24,19 @@ public partial class CharacterSelect : Control
 	// Changes the character according to the button pressed
 	private void OnSwordsmanPressed()
 	{
-		GetTree().ChangeSceneToFile("res://menus/MainMenu.tscn");
 		Global.SelectedCharacter = "Swordsman";
+		Global.Instance.MainScene.ShowMainMenu();
 	}
 	
 	private void OnBerserkerPressed()
 	{
-		GetTree().ChangeSceneToFile("res://menus/MainMenu.tscn");
 		Global.SelectedCharacter = "Berserker";
+		Global.Instance.MainScene.ShowMainMenu();
 	}
 	
 	private void OnMagePressed()
 	{
-		GetTree().ChangeSceneToFile("res://menus/MainMenu.tscn");
 		Global.SelectedCharacter = "Mage";
+		Global.Instance.MainScene.ShowMainMenu();
 	}
 }

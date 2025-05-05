@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://entities/player/Player.cs" id="1_h34xs"]
 [ext_resource type="Texture2D" uid="uid://4xavdx84pjpu" path="res://entities/player/Assets/Berserker Walk.png" id="2_awygy"]
-[ext_resource type="PackedScene" path="res://entities/player/MageAttack.tscn" id="2_c6bsh"]
+[ext_resource type="PackedScene" uid="uid://csjfp8npibnre" path="res://entities/player/MageAttack.tscn" id="2_c6bsh"]
 [ext_resource type="Texture2D" uid="uid://8p330syfl6vl" path="res://entities/player/Assets/Swordsman Attack.png" id="2_s6ys5"]
 [ext_resource type="Texture2D" uid="uid://ch3h2wo18avqm" path="res://entities/player/Assets/Berserker Attack.png" id="3_r530b"]
 [ext_resource type="Texture2D" uid="uid://bnknobys38nsg" path="res://entities/player/Assets/MageCat.png" id="4_2dg11"]
