@@ -8,6 +8,9 @@ public partial class NextLevelController : Node2D
 	[Export]
 	private PackedScene nextLevelScene;
 	
+	[Export]
+	private bool AutoSpawnOnReady = true;
+	
 	public override void _Ready()
 	{
 		// calls the level marker creator
