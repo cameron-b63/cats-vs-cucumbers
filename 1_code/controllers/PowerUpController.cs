@@ -13,7 +13,7 @@ public partial class PowerUpController : Node2D
 	{
 		// Example spawn position
 		SpawnPowerUp(new Vector2(300, 500), powerUpType.Speed);
-		SpawnPowerUp(new Vector2(500, 500), powerUpType.Jump);
+		SpawnPowerUp(new Vector2(1900, 500), powerUpType.Jump);
 	}
 	
 	public void SpawnPowerUp(Vector2 position, powerUpType type)
