@@ -1076,6 +1076,7 @@ cucumber1Scene = ExtResource("14_mcyhw")
 [node name="NextLevelController" type="Node2D" parent="."]
 script = ExtResource("15_hjlam")
 nextLevelScene = ExtResource("16_3fm74")
+AutoSpawnOnReady = false
 
 [node name="FunctionTest" type="Node2D" parent="."]
 script = ExtResource("17_303pv")
