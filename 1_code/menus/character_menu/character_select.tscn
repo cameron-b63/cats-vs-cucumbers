@@ -16,6 +16,7 @@ grow_vertical = 2
 script = ExtResource("1_7kfh5")
 
 [node name="TealColor" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = -276.0
 offset_top = -218.0
 offset_right = 748.0
@@ -24,6 +25,7 @@ scale = Vector2(120.207, 1.08877)
 texture = ExtResource("2_2oyiq")
 
 [node name="BlueBack" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 338.0
 offset_top = 59.0
 offset_right = 1847.0
@@ -33,6 +35,7 @@ texture = ExtResource("3_le0sl")
 stretch_mode = 5
 
 [node name="SwordsmanButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 434.0
 offset_top = 67.0
 offset_right = 766.0
@@ -48,6 +51,7 @@ flat = true
 icon_alignment = 1
 
 [node name="BerserkerButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 432.0
 offset_top = 221.0
 offset_right = 764.0
@@ -62,6 +66,7 @@ flat = true
 icon_alignment = 1
 
 [node name="MageButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 434.0
 offset_top = 375.0
 offset_right = 766.0

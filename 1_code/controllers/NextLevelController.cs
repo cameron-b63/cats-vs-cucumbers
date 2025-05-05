@@ -8,11 +8,15 @@ public partial class NextLevelController : Node2D
 	[Export]
 	private PackedScene nextLevelScene;
 	
+	[Export]
+	public bool AutoSpawnOnReady = true;
+	
 	public override void _Ready()
 	{
-		// calls the level marker creator
-		// TODO: make levels spawn on top of a Node2D "LevelEnd" found in each level file.
-		SpawnLevelMarker(new Vector2(2700, 520));
+		if (AutoSpawnOnReady)
+		{
+			SpawnLevelMarker(new Vector2(500, 520));
+		}
 	}
 	
 	public void SpawnLevelMarker(Vector2 position)

@@ -15,6 +15,7 @@ public partial class NextLevel : Area2D
 		// checks if the colliding body is a player or not
 		if (body.IsInGroup("Player"))
 		{
+			GD.Print("Player entered next level zone");
 			CallDeferred(nameof(LoadNextScene));
 		}
 	}
@@ -25,12 +26,6 @@ public partial class NextLevel : Area2D
 			GD.PrintErr("MainScene missing from Global.");
 			return;
 		} 
-		
-		if (Global.Instance.NextLevelSource == null)
-		{
-			GD.PrintErr("NextLevelSource missing from Global.");
-			return;
-		}
 		
 		// changes to next level
 		if (Global.Instance.ShouldLoadNextLevel)

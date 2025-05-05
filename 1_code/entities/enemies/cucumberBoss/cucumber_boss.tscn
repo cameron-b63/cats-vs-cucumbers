@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://eega6lwjbuc0"]
+
+[ext_resource type="Script" path="res://entities/enemies/cucumberBoss/CucumberBoss.cs" id="1_yrhm6"]
+[ext_resource type="Texture2D" uid="uid://crotu4t6gqaeb" path="res://entities/enemies/cucumber1/assets/cucumber_1.png" id="2_78uja"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1omt7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_78uja")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bsukm"]
+radius = 31.0
+height = 188.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_adlg3"]
+radius = 32.0
+height = 186.0
+
+[node name="CucumberBoss" type="CharacterBody2D"]
+collision_layer = 256
+collision_mask = 244
+script = ExtResource("1_yrhm6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(22.9, -32.1)
+scale = Vector2(0.144727, 0.141797)
+sprite_frames = SubResource("SpriteFrames_1omt7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(22, -20)
+shape = SubResource("CapsuleShape2D_bsukm")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(22, -23)
+shape = SubResource("CapsuleShape2D_adlg3")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
