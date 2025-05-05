@@ -26,12 +26,6 @@ public partial class NextLevel : Area2D
 			return;
 		} 
 		
-		if (Global.Instance.NextLevelSource == null)
-		{
-			GD.PrintErr("NextLevelSource missing from Global.");
-			return;
-		}
-		
 		// changes to next level
 		if (Global.Instance.ShouldLoadNextLevel)
 		{

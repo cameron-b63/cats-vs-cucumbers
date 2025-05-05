@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cat5i8uq2u3ud"]
+[gd_scene load_steps=9 format=3 uid="uid://cat5i8uq2u3ud"]
 
 [ext_resource type="Script" path="res://menus/main_menu/MainMenu.cs" id="1_pf24x"]
 [ext_resource type="PackedScene" uid="uid://b2ym33q2241o" path="res://scenes/level1/level_1_scene.tscn" id="2_0rhov"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://drpgj5tng5deu" path="res://menus/main_menu/assets/Teal.png" id="3_osxsi"]
 [ext_resource type="FontFile" uid="uid://dhqy3nd8oors8" path="res://fonts/LuckiestGuy-Regular.ttf" id="5_31qf3"]
 [ext_resource type="Texture2D" uid="uid://uk2v6a1qk7od" path="res://menus/main_menu/assets/Banner_Orange.png" id="5_eanr5"]
+[ext_resource type="AudioStream" uid="uid://bmfnuo1mqonee" path="res://menus/main_menu/assets/Forest Day Theme (Loop).wav" id="8_p8ctk"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -86,3 +87,7 @@ text = "Customize Your Cat"
 icon = ExtResource("3_bukls")
 flat = true
 icon_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_p8ctk")
+autoplay = true

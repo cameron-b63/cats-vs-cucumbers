@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://dci0pacw056j4"]
+[gd_scene load_steps=26 format=4 uid="uid://dci0pacw056j4"]
 
 [ext_resource type="Script" path="res://scenes/level2/Level2.cs" id="1_rlgnq"]
 [ext_resource type="PackedScene" uid="uid://bj4lhkwnq36e3" path="res://scenes/level3/level3.tscn" id="2_6ph84"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://controllers/NextLevelController.cs" id="16_lspxu"]
 [ext_resource type="PackedScene" uid="uid://bnytqr2pv31a4" path="res://entities/next_level/nextlevel.tscn" id="17_385mc"]
 [ext_resource type="Script" path="res://tests/FunctionTest.cs" id="18_33tlg"]
+[ext_resource type="AudioStream" uid="uid://dfe41fimmr65n" path="res://scenes/level2/assets/Forst Night Theme (Loop).wav" id="20_7eg0h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_itgqv"]
 texture = ExtResource("3_ugbvd")
@@ -1864,3 +1865,7 @@ nextLevelScene = ExtResource("17_385mc")
 
 [node name="FunctionTest" type="Node2D" parent="."]
 script = ExtResource("18_33tlg")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_7eg0h")
+autoplay = true

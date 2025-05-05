@@ -24,6 +24,11 @@ public partial class MageAttack : Area2D
 			cucumber.CucumberTakeDamage(1);
 			QueueFree(); // Destroy the projectile on hit
 		}
+		else if(body is CucumberBoss boss)
+		{
+			boss.CucumberTakeDamage(1);
+			QueueFree();
+		}
 	}
 	
 	// If the projectile leaves the screen, delete the projectile

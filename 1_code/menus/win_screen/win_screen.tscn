@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://cgg3wtn7gscwr"]
+[gd_scene load_steps=2 format=3 uid="uid://cgg3wtn7gscwr"]
+
+[ext_resource type="AudioStream" uid="uid://cxe0d6ynwo4pw" path="res://menus/win_screen/Assets/Win Sound.wav" id="1_qk2mt"]
 
 [node name="WinScreen" type="Control"]
 layout_mode = 3
@@ -16,3 +18,7 @@ offset_top = 312.0
 offset_right = 601.0
 offset_bottom = 335.0
 text = "Yo GG"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_qk2mt")
+autoplay = true

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b3440fuwdckq8"
+path="res://.godot/imported/Forest Day Theme (Loop).wav-920317410cf559e146052f4d2bdf20db.sample"
+
+[deps]
+
+source_file="res://scenes/level1/assets/Forest Day Theme (Loop).wav"
+dest_files=["res://.godot/imported/Forest Day Theme (Loop).wav-920317410cf559e146052f4d2bdf20db.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
