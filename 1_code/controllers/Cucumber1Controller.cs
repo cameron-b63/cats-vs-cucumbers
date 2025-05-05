@@ -30,7 +30,7 @@ public partial class Cucumber1Controller : Node2D
 
 			float finalX = baseX + jitter;
 	
-			SpawnCucumber1(new Vector2(finalX, 540));
+			SpawnCucumber1(new Vector2(finalX, 520));
 		}
 	}
 	
@@ -39,7 +39,6 @@ public partial class Cucumber1Controller : Node2D
 		// creates the enemy 
 		Cucumber1 enemy = (Cucumber1)cucumber1Scene.Instantiate();
 		enemy.Position = position;
-		
 		AddChild(enemy);
 	}
 }

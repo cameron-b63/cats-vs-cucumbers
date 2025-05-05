@@ -29,7 +29,7 @@ public partial class Player : CharacterBody2D
 	private bool _isAttacking = false;
 	private bool _facingRight = true;
 	
-	private float _mageAttackCooldown = 0.75f; // half a second cooldown
+	private float _mageAttackCooldown = 0.75f;
 	private float _lastMageAttackTime = -1f;
 	
 	private string _selectedCharacter = "";
@@ -171,10 +171,14 @@ public partial class Player : CharacterBody2D
 			return;
 			
 		// if the player hits a cucumber, signal the cucumber to lose life
-		if(body is Cucumber1 cucumber && cucumber != null)
+		if(body is Cucumber1 cucumber)
 		{
 			cucumber.CucumberTakeDamage(1);
-			GD.Print("Cucumber hit sword");
+			_attackHitBox.SetDeferred("monitoring", false);
+		}
+		if(body is CucumberBoss boss)
+		{
+			boss.CucumberTakeDamage(1);
 			_attackHitBox.SetDeferred("monitoring", false);
 		}
 	}

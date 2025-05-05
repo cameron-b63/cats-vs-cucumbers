@@ -139,7 +139,7 @@ drag_right_margin = 0.0
 
 [node name="SwordsmanAttack" type="Area2D" parent="."]
 collision_layer = 16
-collision_mask = 8
+collision_mask = 264
 
 [node name="SwordsmanAttackHitBox" type="CollisionShape2D" parent="SwordsmanAttack"]
 position = Vector2(64.6938, 9.2872)
@@ -147,12 +147,10 @@ rotation = 2.61799
 shape = SubResource("RectangleShape2D_2r8pp")
 
 [node name="BerserkerAttack" type="Area2D" parent="."]
-visible = false
 collision_layer = 32
-collision_mask = 8
+collision_mask = 264
 
 [node name="BerserkerAttackHitBox" type="CollisionShape2D" parent="BerserkerAttack"]
-visible = false
 position = Vector2(74.11, -7.94318)
 rotation = 2.41728
 shape = SubResource("RectangleShape2D_7i83y")
