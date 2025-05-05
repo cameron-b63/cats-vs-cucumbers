@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://bj4lhkwnq36e3"]
+[gd_scene load_steps=27 format=4 uid="uid://bj4lhkwnq36e3"]
 
 [ext_resource type="Script" path="res://scenes/level3/Level3.cs" id="1_chceg"]
 [ext_resource type="Texture2D" uid="uid://cocf5wdtmkv7v" path="res://scenes/level3/assets/Background_Layer1.png" id="2_crj2h"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://tests/FunctionTest.cs" id="17_303pv"]
 [ext_resource type="Script" path="res://controllers/CucumberBossController.cs" id="19_6pk4u"]
 [ext_resource type="PackedScene" uid="uid://piebo7n0p5nv" path="res://entities/enemies/CucumberBoss/CucumberBoss.tscn" id="20_dtbg5"]
+[ext_resource type="AudioStream" uid="uid://61arythcakvi" path="res://scenes/level3/assets/Boss Battle Theme (Loop).wav" id="21_hq22g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ts2ae"]
 texture = ExtResource("9_f6f5m")
@@ -1082,3 +1083,7 @@ script = ExtResource("17_303pv")
 [node name="CucumberBossController" type="Node2D" parent="."]
 script = ExtResource("19_6pk4u")
 cucumberBossScene = ExtResource("20_dtbg5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_hq22g")
+autoplay = true

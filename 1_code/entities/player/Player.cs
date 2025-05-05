@@ -208,14 +208,14 @@ public partial class Player : CharacterBody2D
 		if (Time.GetTicksMsec() - _lastMageAttackTime < _mageAttackCooldown * 1000)
 			return;
 
-			_lastMageAttackTime = Time.GetTicksMsec();
+		_lastMageAttackTime = Time.GetTicksMsec();
 
-			Node2D projectileInstance = MageProjectileScene.Instantiate<Node2D>();
-			projectileInstance.Position = GlobalPosition + new Vector2(_facingRight ? 30 : -30, 0);
+		Node2D projectileInstance = MageProjectileScene.Instantiate<Node2D>();
+		projectileInstance.Position = GlobalPosition + new Vector2(_facingRight ? 30 : -30, 0);
 
-			if (projectileInstance is MageAttack mageProjectile)
-				mageProjectile.Direction = _facingRight ? Vector2.Right : Vector2.Left;
+		if (projectileInstance is MageAttack mageProjectile)
+			mageProjectile.Direction = _facingRight ? Vector2.Right : Vector2.Left;
 
-			GetTree().CurrentScene.AddChild(projectileInstance);
+		GetTree().CurrentScene.AddChild(projectileInstance);
 		}
 }

@@ -23,6 +23,6 @@ public partial class CucumberBossController : Node
 	private void OnBossDefeated()
 	{
 		var nextlevelController = GetParent().GetNode<NextLevelController>("NextLevelController");
-		nextlevelController.SpawnLevelMarker(new Vector2(2700, 500));
+		nextlevelController.SpawnLevelMarker(new Vector2(3000, 450));
 	}
 }

@@ -1,26 +1,25 @@
 [gd_scene load_steps=4 format=3 uid="uid://csjfp8npibnre"]
 
 [ext_resource type="Script" path="res://entities/player/MageAttack.cs" id="1_omwit"]
-[ext_resource type="Texture2D" uid="uid://crotu4t6gqaeb" path="res://entities/enemies/cucumber1/assets/cucumber_1.png" id="2_oylni"]
+[ext_resource type="Texture2D" uid="uid://b1m7dndd43rhr" path="res://entities/player/Assets/fireball-png-16394.png" id="2_66j8k"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i1gxl"]
-radius = 37.0
-height = 184.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ctfa"]
+radius = 38.0789
 
 [node name="MageAttack" type="Area2D"]
 collision_layer = 128
-collision_mask = 8
+collision_mask = 264
 script = ExtResource("1_omwit")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_i1gxl")
+shape = SubResource("CircleShape2D_6ctfa")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-3, 1)
 rotation = 1.5708
 scale = Vector2(0.155718, 0.15921)
-texture = ExtResource("2_oylni")
+texture = ExtResource("2_66j8k")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 

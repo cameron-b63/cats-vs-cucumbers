@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://b2ym33q2241o"]
+[gd_scene load_steps=27 format=4 uid="uid://b2ym33q2241o"]
 
 [ext_resource type="Texture2D" uid="uid://b8hxy4ug08fb5" path="res://scenes/level1/assets/TileSheet1.png" id="1_5nnbe"]
 [ext_resource type="Texture2D" uid="uid://b7b3q5pn3m8uy" path="res://scenes/level1/assets/Background_Layer1.png" id="1_sgr6f"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bnytqr2pv31a4" path="res://entities/next_level/nextlevel.tscn" id="6_uteio"]
 [ext_resource type="Texture2D" uid="uid://cgsb3q6vsfa8w" path="res://scenes/level1/assets/Background_Layer7.png" id="7_gikd0"]
 [ext_resource type="Texture2D" uid="uid://b0vrygy1k5xn1" path="res://scenes/level3/assets/Grass Base - v1.5.png" id="13_fjx7j"]
+[ext_resource type="AudioStream" uid="uid://b3440fuwdckq8" path="res://scenes/level1/assets/Forest Day Theme (Loop).wav" id="21_cglxq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vx0d6"]
 texture = ExtResource("1_5nnbe")
@@ -1133,3 +1134,7 @@ nextLevelScene = ExtResource("6_uteio")
 
 [node name="FunctionTest" type="Node2D" parent="."]
 script = ExtResource("5_l8qpn")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_cglxq")
+autoplay = true
